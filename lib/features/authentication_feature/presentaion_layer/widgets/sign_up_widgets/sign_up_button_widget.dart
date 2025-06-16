@@ -27,7 +27,7 @@ class SignUpButtonWidget extends StatelessWidget {
         function: () {
           if (validate()) {
             SignUpEntity signUpEntity = getSignUpData();
-            sl<SignUpBloc>()
+            SignUpBloc.get(context)
                 .add(SignUpProcessEvent(signUpEntity: signUpEntity));
           }
         },

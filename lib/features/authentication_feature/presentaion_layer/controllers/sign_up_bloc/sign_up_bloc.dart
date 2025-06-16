@@ -23,6 +23,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       emit(SignUpErrorState(error: failure.userMessage));
     }, (success) {
       emit(SignUpSuccessState());
+
+
     });
   }
 }

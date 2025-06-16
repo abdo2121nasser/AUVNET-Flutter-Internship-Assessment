@@ -5,6 +5,7 @@ import 'package:auvent_flutter_internship_assessment/features/authentication_fea
 import 'package:bloc/bloc.dart';
 import 'package:either_dart/either.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -22,10 +23,11 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<CreateUserEvent>(createUser);
   }
 
-  FutureOr<void> createUser(event, emit) {
+  Future<void> createUser(event, emit) async {
     emit(state.copyWith(userState: RequestStateEnum.loading));
-    final result = createUserUseCase(event.userEntity);
+    final result = await createUserUseCase(event.userEntity);
     result.fold((failure) {
+      debugPrint(failure.devMessage);
       showToastMessage(message: failure.userMessage);
       emit(state.copyWith(
           userState: RequestStateEnum.error, errorMessage: failure.userMessage));

@@ -1,4 +1,5 @@
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/sign_in_bloc/sign_in_bloc.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,10 +14,10 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => sl<SignUpBloc>(),
-        child: const SingleChildScrollView(child: SignUpScreenBodyWidget()),
-      ),
+      body: MultiBlocProvider(providers: [
+        BlocProvider(create: (context) => sl<SignUpBloc>()),
+        BlocProvider(create: (context) => sl<UserBloc>()),
+      ], child: const SingleChildScrollView(child: SignUpScreenBodyWidget())),
     );
   }
 }
