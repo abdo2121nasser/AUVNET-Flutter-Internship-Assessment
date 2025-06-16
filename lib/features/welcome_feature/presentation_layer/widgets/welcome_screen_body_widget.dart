@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/values/app_size.dart';
 import '../widgets/title_and_sub_title_widget.dart';
 import '../widgets/welcome_image_widget.dart';
+import 'buttons_section_widget.dart';
 
 class WelcomeScreenBodyWidget extends StatelessWidget {
   const WelcomeScreenBodyWidget({
@@ -21,21 +22,12 @@ class WelcomeScreenBodyWidget extends StatelessWidget {
       children: [
         WelcomeImageWidget(),
         TitleAndSubTitleWidget(),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: k14H),
-          child: Column(
-            children: [
-              GeneralButtonWidget(
-                  label: UiStrings.kGetStartWord,
-                  function: () {},
-                  textStyle: AppTextStyles.rubikMedium18(color: kWhiteColor)),
-              GestureDetector(
-                  onTap: (){},
-                  child: Text(UiStrings.kNextWord,style: AppTextStyles.rubikRegular14(color: kGreyColor),))
-            ],
-          ),
-        ),
+        ButtonsSectionWidget(),
+        SizedBox(height: MediaQuery.maybeOf(context)!.size.height*0.02,)
       ],
     );
   }
 }
+
+
+
