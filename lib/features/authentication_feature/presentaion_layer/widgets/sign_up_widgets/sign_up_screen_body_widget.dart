@@ -65,7 +65,7 @@ class _SignUpScreenBodyWidgetState extends State<SignUpScreenBodyWidget> {
   bool _validate() => _globalKey.currentState!.validate();
 
   SignUpEntity _getSignUpData() => SignUpEntity(
-      name: _nameController.text,
+      // name: _nameController.text,
       email: _emailController.text,
       password: _passwordController.text);
   @override

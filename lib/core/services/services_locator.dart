@@ -1,5 +1,5 @@
 import 'package:auvent_flutter_internship_assessment/core/utils/usecase/base_usecase.dart';
-import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/base_authentication_remote_data_source.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/base_data_source/base_authentication_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/authentication_by_firebase_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/repositories/authentication_repository.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/repositories/base_authentication_repository.dart';

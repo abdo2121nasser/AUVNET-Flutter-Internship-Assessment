@@ -1,5 +1,5 @@
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/logic_strings.dart';
-import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/base_authentication_remote_data_source.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/base_data_source/base_authentication_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/entities/sign_up_entity.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/repositories/base_authentication_repository.dart';
 import 'package:either_dart/either.dart';
