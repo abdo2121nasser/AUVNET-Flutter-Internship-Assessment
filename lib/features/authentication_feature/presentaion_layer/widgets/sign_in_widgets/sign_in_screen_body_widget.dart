@@ -34,12 +34,13 @@ class SignInScreenBodyWidget extends StatelessWidget {
           SizedBox(
             height:k20V,
           ),
-          SignInButtonSectionWidget()
+          SignInButtonSectionWidget(validate: _validate,)
 
         ],
       ),
     );
   }
+  bool _validate() =>_globalKey.currentState!.validate();
 }
 
 

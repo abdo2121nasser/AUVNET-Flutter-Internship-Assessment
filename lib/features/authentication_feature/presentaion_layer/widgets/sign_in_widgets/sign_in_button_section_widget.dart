@@ -9,13 +9,15 @@ import '../../../../../core/utils/values/app_size.dart';
 class SignInButtonSectionWidget extends StatelessWidget {
   const SignInButtonSectionWidget({
     super.key,
+    required this.validate
   });
+  final bool Function() validate;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SignInButtonWidget(),
+        SignInButtonWidget(validate: validate,),
         SizedBox(
           height:k20V,
         ),

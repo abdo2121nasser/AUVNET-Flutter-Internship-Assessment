@@ -9,13 +9,18 @@ import '../../../../../core/utils/text_styles/style_manager.dart';
 class SignInButtonWidget extends StatelessWidget {
   const SignInButtonWidget({
     super.key,
+    required this.validate
   });
+  final bool Function() validate;
 
   @override
   Widget build(BuildContext context) {
     return GeneralButtonWidget(
         label: UiStrings.kSignInWord,
         function: () {
+    if(validate()){
+
+    }
         },
         textStyle: AppTextStyles.dmSansMedium14(color: kWhiteColor));
   }
