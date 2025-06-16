@@ -9,7 +9,7 @@ class UserFirebaseRemoteDataSource extends BaseUserRemoteDataSource {
   @override
   Future<void> createUser({required UserModel userModel}) async {
    await FirebaseFirestore.instance
-        .collection(LogicStrings.kUserCollection)
-        .add(userModel.toJson());
+        .collection(LogicStrings.kUserCollection).doc(userModel.docId)
+        .set(userModel.toJson());
   }
 }

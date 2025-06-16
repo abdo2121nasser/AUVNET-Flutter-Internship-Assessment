@@ -3,6 +3,7 @@ import 'package:auvent_flutter_internship_assessment/core/utils/constants/images
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,7 +86,10 @@ class SignUpFormWidget extends StatelessWidget {
   }
 
   UserEntity _getUserData() => UserEntity(
+        docId: _getUserId,
         name: nameController.text,
         email: emailController.text,
       );
+
+  String get _getUserId => FirebaseAuth.instance.currentUser!.uid;
 }
