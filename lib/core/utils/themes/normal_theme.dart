@@ -9,7 +9,12 @@ ThemeData get getLightTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: kPurpleColor,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(k10R),
+      ),
+
         padding:  EdgeInsets.symmetric(horizontal: k20H, vertical: k12V),
+        fixedSize: Size(double.maxFinite, k18V)
       ),
     ),
 
