@@ -12,6 +12,9 @@ class UiStrings{
   static const String kGetStartWord='Get Started';
   static const String kNextWord='next';
 
+  static const String kNameHint='Ahmed';
+  static const String kNameLabel='Name';
+
   static const String kEmailHint='example@gmail.com';
   static const String kEmailLabel='Email';
 
