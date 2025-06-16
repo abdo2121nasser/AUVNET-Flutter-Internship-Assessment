@@ -18,6 +18,7 @@ class WelcomeScreenBodyWidget extends StatelessWidget {
         WelcomeImageWidget(),
         TitleAndSubTitleWidget(),
 
+
       ],
     );
   }
