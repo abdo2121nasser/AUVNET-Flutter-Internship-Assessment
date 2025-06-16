@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "217328707822",
+    "project_id": "auvnet-task",
+    "storage_bucket": "auvnet-task.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217328707822:android:2c809be1fe9b2d7f3b2bff",
+        "android_client_info": {
+          "package_name": "com.example.auvent_flutter_internship_assessment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_UIx47gIyTLp1LISAAdJ2lO6lFn2lHcU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
