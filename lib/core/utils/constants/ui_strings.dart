@@ -21,5 +21,11 @@ class UiStrings{
   static const String kConfirmPasswordLabel='Confirm Password';
   static const String kConfirmPasswordHint='12345678Aa!';
 
+  static const String kSignInWord='Sign In';
+  static const String kSignInMessage='Create an account';
+  static const String kSignUpWord='Sign Up';
+  static const String kSignUpMessage='Already have an account';
+
+
 
 }
