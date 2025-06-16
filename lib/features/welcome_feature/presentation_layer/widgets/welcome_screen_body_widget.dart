@@ -3,8 +3,9 @@ import 'package:auvent_flutter_internship_assessment/features/welcome_feature/pr
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utils/constants/images.dart';
 import '../widgets/title_and_sub_title_widget.dart';
-import '../widgets/welcome_image_widget.dart';
+import '../../../../core/utils/component/local_image_assets_widget.dart';
 import 'buttons_section_widget.dart';
 
 class WelcomeScreenBodyWidget extends StatelessWidget {
@@ -18,7 +19,7 @@ class WelcomeScreenBodyWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const WelcomeImageWidget(),
+        const LocalImageAssetsWidget(imagePath:  kWelcomeImage),
         BlocBuilder<WelcomeBloc, WelcomeState>(
           builder: (context, state) {
             return TitleAndSubTitleWidget(

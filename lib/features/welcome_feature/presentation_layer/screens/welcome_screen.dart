@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/constants/ui_strings.dart';
 import '../widgets/title_and_sub_title_widget.dart';
-import '../widgets/welcome_image_widget.dart';
+import '../../../../core/utils/component/local_image_assets_widget.dart';
 import '../widgets/welcome_screen_body_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
