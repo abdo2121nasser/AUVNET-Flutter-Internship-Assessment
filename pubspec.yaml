@@ -77,7 +77,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/core/utils/images/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -100,7 +100,7 @@ flutter:
   fonts:
     - family: DM Sans
       fonts:
-        - asset: assets/fonts/dm_sans/DMSans-Medium.tt
+        - asset: assets/fonts/dm_sans/DMSans-Medium.ttf
           weight: 500
         - asset: assets/fonts/dm_sans/DMSans-Bold.ttf
           weight: 700
