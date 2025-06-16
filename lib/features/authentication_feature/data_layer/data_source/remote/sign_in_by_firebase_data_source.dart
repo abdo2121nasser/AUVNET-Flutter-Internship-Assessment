@@ -11,6 +11,7 @@ class SignInByFireBaseDataSource extends BaseAuthenticationRemoteDataSource {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: signInEntity.email, password: signInEntity.password);
     } on FirebaseAuthException catch (e) {
+
       throw ServerException(errorMessage: 'Sign-in failed: ${e.message}',);
     }
   }

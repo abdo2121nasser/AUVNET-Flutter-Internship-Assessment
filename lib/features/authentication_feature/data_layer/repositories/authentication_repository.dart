@@ -13,12 +13,12 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
   AuthenticationRepository({required this.baseAuthenticationRemoteDataSource});
 
   @override
-  Future<Either<Failure, void>> signIn(
+  Future<Either<Failure, Future<void>>> signIn(
       {required SignInEntity signInEntity}) async {
     try {
       await baseAuthenticationRemoteDataSource.signIn(
           signInEntity: signInEntity);
-      return const Right(null);
+      return Right(Future.value(null));
     } on FirebaseAuthException catch (e) {
       Failure failure = FirebaseFailure.fromFirebaseException(e);
       return Left(failure);

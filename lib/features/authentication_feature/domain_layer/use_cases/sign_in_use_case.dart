@@ -17,6 +17,7 @@ class SignInUseCase extends BaseUseCase {
   });
   @override
   Future<Either<Failure, void>> call() async {
+
     return await baseAuthenticationRepository.signIn(
         signInEntity: signInEntity);
   }

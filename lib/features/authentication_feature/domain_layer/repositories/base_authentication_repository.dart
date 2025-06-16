@@ -4,6 +4,6 @@ import 'package:either_dart/either.dart';
 import '../entities/sign_in_entity.dart';
 
 abstract class BaseAuthenticationRepository {
-  Future<Either<Failure, void>> signIn(
+  Future<Either<Failure, Future<void>>> signIn(
       {required SignInEntity signInEntity});
 }
