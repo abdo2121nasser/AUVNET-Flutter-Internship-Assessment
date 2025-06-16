@@ -18,7 +18,7 @@ class WelcomeScreenBodyWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        WelcomeImageWidget(),
+        const WelcomeImageWidget(),
         BlocBuilder<WelcomeBloc, WelcomeState>(
           builder: (context, state) {
             return TitleAndSubTitleWidget(
@@ -27,7 +27,7 @@ class WelcomeScreenBodyWidget extends StatelessWidget {
             );
           },
         ),
-        ButtonsSectionWidget(),
+        const ButtonsSectionWidget(),
         SizedBox(height: MediaQuery
             .maybeOf(context)!
             .size

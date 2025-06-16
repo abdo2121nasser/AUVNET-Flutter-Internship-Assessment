@@ -17,7 +17,7 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
         )) {
     on<MoveToNextContentEvent>(moveToNextContent);
   }
-  static WelcomeBloc get(context)=>BlocProvider.of(context);
+  static WelcomeBloc get(context) => BlocProvider.of(context);
   FutureOr<void> moveToNextContent(event, emit) {
     final int nextIndex = state.currentIndex + 1;
 

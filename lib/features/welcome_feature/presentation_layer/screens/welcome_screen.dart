@@ -18,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => WelcomeBloc(),
-        child: WelcomeScreenBodyWidget(),
+        child: const WelcomeScreenBodyWidget(),
       ),
     );
   }
