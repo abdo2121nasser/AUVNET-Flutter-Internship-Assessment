@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/constants/ui_strings.dart';
 class TitleAndSubTitleWidget extends StatelessWidget {
+  final String title,subTitle;
   const TitleAndSubTitleWidget({
     super.key,
+    required this.title,
+    required this.subTitle
   });
 
   @override
@@ -17,11 +20,11 @@ class TitleAndSubTitleWidget extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              UiStrings.kFirstWelcomeTitleString,
+              title,
               style: AppTextStyles.rubikMedium28(),
             ),
             Text(
-              UiStrings.kFirstWelcomeSubTitleString,
+              subTitle,
               textAlign: TextAlign.center,
               style: AppTextStyles.rubikRegular14(),
             ),

@@ -1,4 +1,7 @@
+import 'package:auvent_flutter_internship_assessment/features/welcome_feature/presentation_layer/controllers/welcome_bloc/welcome_bloc.dart';
+import 'package:auvent_flutter_internship_assessment/features/welcome_feature/presentation_layer/controllers/welcome_bloc/welcome_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/title_and_sub_title_widget.dart';
 import '../widgets/welcome_image_widget.dart';
@@ -16,9 +19,19 @@ class WelcomeScreenBodyWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         WelcomeImageWidget(),
-        TitleAndSubTitleWidget(),
+        BlocBuilder<WelcomeBloc, WelcomeState>(
+          builder: (context, state) {
+            return TitleAndSubTitleWidget(
+              title: state.title,
+              subTitle: state.subTitle,
+            );
+          },
+        ),
         ButtonsSectionWidget(),
-        SizedBox(height: MediaQuery.maybeOf(context)!.size.height*0.02,)
+        SizedBox(height: MediaQuery
+            .maybeOf(context)!
+            .size
+            .height * 0.02,)
       ],
     );
   }
