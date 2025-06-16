@@ -7,15 +7,18 @@ ThemeData get getLightTheme {
     brightness: Brightness.light,
     scaffoldBackgroundColor: kWhiteColor,
     elevatedButtonTheme: ElevatedButtonThemeData(
+
       style: ElevatedButton.styleFrom(
+        alignment: Alignment.center,
         backgroundColor: kPurpleColor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(k10R),
       ),
 
-        padding:  EdgeInsets.symmetric(horizontal: k20H, vertical: k12V),
-        fixedSize: Size(double.maxFinite, k18V)
+        padding:  EdgeInsets.symmetric(horizontal: k20H),
+        fixedSize: Size(double.maxFinite, k60V)
       ),
+
     ),
 
     // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
