@@ -21,28 +21,23 @@ class SignInButtonSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<SignInBloc, SignInState>(
-          builder: (context, state) {
-              if(state is SignInLoadingState){
-                return const CircularProgressIndicator();
-              }
-            else {
-             return   SignInButtonWidget(validate: validate,
+    return  BlocBuilder<SignInBloc, SignInState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            SignInButtonWidget(validate: validate,
               getSignInData: getSignInData,
-            );
-              }
-          },
-        ),
-        SizedBox(
-          height: k20V,
-        ),
-        const SignInMessageTextWidget(),
-        SizedBox(
-          height: k20V,
-        ),
-      ],
+            ),
+            SizedBox(
+              height: k20V,
+            ),
+            const SignInMessageTextWidget(),
+            SizedBox(
+              height: k20V,
+            ),
+          ],
+        );
+      },
     );
   }
 }

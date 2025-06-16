@@ -22,28 +22,30 @@ class SignUpButtonSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<SignUpBloc, SignUpState>(
-          builder: (context, state) {
-              if(state is SignInLoadingState){
-                return const CircularProgressIndicator();
-              }
-            else {
-             return   SignUpButtonWidget(validate: validate,
-               getSignUpData: getSignUpData,
-            );
-              }
-          },
-        ),
-        SizedBox(
-          height: k20V,
-        ),
-        const SignUpMessageTextWidget(),
-        SizedBox(
-          height: k20V,
-        ),
-      ],
+    return  BlocBuilder<SignUpBloc, SignUpState>(
+      builder: (context, state) {
+        if (state is SignUpLoadingState) {
+          return Padding(
+            padding:  EdgeInsets.symmetric(vertical:k20V ),
+            child: const CircularProgressIndicator(),
+          );
+        }else {
+          return Column(
+          children: [
+            SignUpButtonWidget(validate: validate,
+              getSignUpData: getSignUpData,
+            ),
+            SizedBox(
+              height: k20V,
+            ),
+            const SignUpMessageTextWidget(),
+            SizedBox(
+              height: k20V,
+            ),
+          ],
+        );
+        }
+      },
     );
   }
 }
