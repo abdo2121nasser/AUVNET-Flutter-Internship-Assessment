@@ -9,6 +9,7 @@ import '../../../../../core/utils/colors/colors.dart';
 import '../../../../../core/utils/component/general_button_widget.dart';
 import '../../../../../core/utils/text_styles/style_manager.dart';
 import '../../../domain_layer/entities/sign_up_entity.dart';
+import '../../controllers/sign_up_bloc/sign_up_bloc.dart';
 
 class SignUpButtonWidget extends StatelessWidget {
   const SignUpButtonWidget({
@@ -24,11 +25,11 @@ class SignUpButtonWidget extends StatelessWidget {
     return GeneralButtonWidget(
         label: UiStrings.kSignUpWord,
         function: () {
-    if(validate()){
-      SignUpEntity signUpEntity=getSignUpData();
-      // sl<SignInBloc>().add(SignInProcessEvent(signInEntity: signInEntity));
-
-    }
+          if (validate()) {
+            SignUpEntity signUpEntity = getSignUpData();
+            sl<SignUpBloc>()
+                .add(SignUpProcessEvent(signUpEntity: signUpEntity));
+          }
         },
         textStyle: AppTextStyles.dmSansMedium14(color: kWhiteColor));
   }
