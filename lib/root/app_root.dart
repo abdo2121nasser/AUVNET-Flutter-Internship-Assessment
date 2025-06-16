@@ -1,4 +1,5 @@
 
+import 'package:auvent_flutter_internship_assessment/core/utils/themes/normal_theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,8 @@ class TaskApp extends StatelessWidget {
         builder: (context) => SafeArea(
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
-            routerConfig: AppRoute.router
+            routerConfig: AppRoute.router,
+            theme: getLightTheme,
           ),
         ),
       ),
