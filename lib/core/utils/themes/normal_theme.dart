@@ -8,6 +8,7 @@ ThemeData get getLightTheme {
   return ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: kWhiteColor,
+    progressIndicatorTheme: ProgressIndicatorThemeData(color: kPurpleColor),
     elevatedButtonTheme: ElevatedButtonThemeData(
 
       style: ElevatedButton.styleFrom(
