@@ -26,6 +26,7 @@ class UiStrings{
 
   static const String kSignInWord='Sign In';
   static const String kSignInMessage='Create an account';
+
   static const String kSignUpWord='Sign Up';
   static const String kSignUpMessage='Already have an account';
 

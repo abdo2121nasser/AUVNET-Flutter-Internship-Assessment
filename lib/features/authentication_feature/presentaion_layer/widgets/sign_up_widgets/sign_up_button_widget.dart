@@ -8,15 +8,16 @@ import '../../../../../core/services/services_locator.dart';
 import '../../../../../core/utils/colors/colors.dart';
 import '../../../../../core/utils/component/general_button_widget.dart';
 import '../../../../../core/utils/text_styles/style_manager.dart';
+import '../../../domain_layer/entities/sign_up_entity.dart';
 
 class SignUpButtonWidget extends StatelessWidget {
   const SignUpButtonWidget({
     super.key,
     required this.validate,
-    required this.getSignInData,
+    required this.getSignUpData,
   });
   final bool Function() validate;
-  final SignInEntity Function() getSignInData;
+  final SignUpEntity Function() getSignUpData;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,8 @@ class SignUpButtonWidget extends StatelessWidget {
         label: UiStrings.kSignUpWord,
         function: () {
     if(validate()){
-      SignInEntity signInEntity=getSignInData();
-      sl<SignInBloc>().add(SignInProcessEvent(signInEntity: signInEntity));
+      SignUpEntity signUpEntity=getSignUpData();
+      // sl<SignInBloc>().add(SignInProcessEvent(signInEntity: signInEntity));
 
     }
         },

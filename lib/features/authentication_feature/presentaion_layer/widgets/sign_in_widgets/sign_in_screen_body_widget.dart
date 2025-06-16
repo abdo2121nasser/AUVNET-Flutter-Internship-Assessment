@@ -8,13 +8,22 @@ import '../../../../../core/utils/component/local_image_assets_widget.dart';
 import '../../../../../core/utils/values/app_size.dart';
 import 'sign_in_button_section_widget.dart';
 
-class SignInScreenBodyWidget extends StatelessWidget {
+class SignInScreenBodyWidget extends StatefulWidget {
   SignInScreenBodyWidget({
     super.key,
   });
+
+  @override
+  State<SignInScreenBodyWidget> createState() => _SignInScreenBodyWidgetState();
+}
+
+class _SignInScreenBodyWidgetState extends State<SignInScreenBodyWidget> {
   final GlobalKey<FormState> _globalKey = GlobalKey();
+
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,6 +54,13 @@ class SignInScreenBodyWidget extends StatelessWidget {
   }
 
   bool _validate() => _globalKey.currentState!.validate();
+
   SignInEntity _getSignInData() => SignInEntity(
       email: _emailController.text, password: _passwordController.text);
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 }

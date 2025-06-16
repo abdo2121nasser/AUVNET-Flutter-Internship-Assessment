@@ -13,7 +13,7 @@ class AppRoute {
 
 
   static final router = GoRouter(
-      initialLocation:signInScreen,
+      initialLocation:signUpScreen,
       routes: [
         GoRoute(
           path: welcomeScreen,

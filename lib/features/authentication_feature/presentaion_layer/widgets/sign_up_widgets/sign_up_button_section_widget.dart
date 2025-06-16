@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/values/app_size.dart';
 import '../../../domain_layer/entities/sign_in_entity.dart';
+import '../../../domain_layer/entities/sign_up_entity.dart';
 import '../../controllers/sign_in_bloc/sign_in_bloc.dart';
 
 
@@ -14,11 +15,11 @@ class SignUpButtonSectionWidget extends StatelessWidget {
   const SignUpButtonSectionWidget({
     super.key,
     required this.validate,
-    required this.getSignInData
+    required this.getSignUpData
   });
 
   final bool Function() validate;
-  final SignInEntity Function() getSignInData;
+  final SignUpEntity Function() getSignUpData;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class SignUpButtonSectionWidget extends StatelessWidget {
               }
             else {
              return   SignUpButtonWidget(validate: validate,
-              getSignInData: getSignInData,
+               getSignUpData: getSignUpData,
             );
               }
           },

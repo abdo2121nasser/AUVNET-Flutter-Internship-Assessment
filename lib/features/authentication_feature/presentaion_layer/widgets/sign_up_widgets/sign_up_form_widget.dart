@@ -13,12 +13,14 @@ class SignUpFormWidget extends StatelessWidget {
   final TextEditingController nameController  ;
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final TextEditingController confirmPasswordController;
   const SignUpFormWidget({
     super.key,
     required this.globalKey,
     required this.nameController,
     required this.emailController,
     required this.passwordController,
+    required this.confirmPasswordController,
   });
 
   @override
@@ -50,6 +52,18 @@ class SignUpFormWidget extends StatelessWidget {
               hint: UiStrings.kPasswordHint,
               label: UiStrings.kPasswordLabel,
               validator: ValidatorService.validatePassword),
+          SizedBox(
+            height: k20V,
+          ),
+          GeneralTextFormField(
+              controller: confirmPasswordController,
+              prefixIcon: CupertinoIcons.lock,
+              hint: UiStrings.kPasswordHint,
+              label: UiStrings.kConfirmPasswordLabel,
+              validator: (value) => ValidatorService.validateConfirmPassword(
+                value,
+                passwordController.text,
+              ))
         ],
       ),
     );
