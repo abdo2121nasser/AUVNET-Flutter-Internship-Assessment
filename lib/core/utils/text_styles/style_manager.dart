@@ -45,7 +45,7 @@ class AppTextStyles {
     fontWeight: FontWeightManager.regular,
     fontSize: FontSize.s14,
     color: color,
-    overflow: TextOverflow.ellipsis,
+    // overflow: TextOverflow.ellipsis,
   );
 
   // Rubik Medium, size 18
