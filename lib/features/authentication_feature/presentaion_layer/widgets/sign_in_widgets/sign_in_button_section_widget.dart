@@ -38,7 +38,10 @@ class SignInButtonSectionWidget extends StatelessWidget {
         SizedBox(
           height: k20V,
         ),
-        SignInMessageTextWidget()
+        const SignInMessageTextWidget(),
+        SizedBox(
+          height: k20V,
+        ),
       ],
     );
   }

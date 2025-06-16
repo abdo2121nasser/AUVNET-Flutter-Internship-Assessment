@@ -20,7 +20,7 @@ class SignInScreen extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => sl<SignInBloc>(),
-        child: SignInScreenBodyWidget(),
+hi        child: SingleChildScrollView(child: SignInScreenBodyWidget()),
       ),
     );
   }
