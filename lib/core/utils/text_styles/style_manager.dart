@@ -1,3 +1,4 @@
+import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:flutter/material.dart';
 import '../colors/colors.dart';
 import 'font_manager.dart';
@@ -10,6 +11,8 @@ class AppTextStyles {
     fontSize: FontSize.s14,
     color: color,
     overflow: TextOverflow.ellipsis,
+    height: k2V,
+
   );
 
   // DM Sans Medium, size 12
@@ -19,6 +22,8 @@ class AppTextStyles {
     fontSize: FontSize.s12,
     color: color,
     overflow: TextOverflow.ellipsis,
+    height: k2V,
+
   );
 
   // DM Sans Bold, size 14
@@ -28,6 +33,8 @@ class AppTextStyles {
     fontSize: FontSize.s14,
     color: color,
     overflow: TextOverflow.ellipsis,
+    height: k2V,
+
   );
 
   // Rubik Medium, size 28
@@ -37,6 +44,8 @@ class AppTextStyles {
     fontSize: FontSize.s28,
     color: color,
     overflow: TextOverflow.ellipsis,
+    height: k2V,
+
   );
 
   // Rubik Regular, size 14
@@ -45,6 +54,8 @@ class AppTextStyles {
     fontWeight: FontWeightManager.regular,
     fontSize: FontSize.s14,
     color: color,
+    height: k2V,
+
     // overflow: TextOverflow.ellipsis,
   );
 
@@ -55,6 +66,8 @@ class AppTextStyles {
     fontSize: FontSize.s18,
     color: color,
     overflow: TextOverflow.ellipsis,
+    height: k2V,
+
   );
 
   // Mulish Light, size 14
@@ -64,5 +77,7 @@ class AppTextStyles {
     fontSize: FontSize.s14,
     color: color,
     overflow: TextOverflow.ellipsis,
+    height: k2V,
+
   );
 }
