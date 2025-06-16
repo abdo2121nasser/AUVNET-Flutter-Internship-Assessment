@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../../core/services/exceptions_service.dart';
 
-class SignInByFireBaseDataSource extends BaseAuthenticationRemoteDataSource {
+class AuthenticationByFirebaseDataSource extends BaseAuthenticationRemoteDataSource {
   @override
   Future<void> signIn({required SignInEntity signInEntity}) async {
     try {
