@@ -21,12 +21,8 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
           signInEntity: signInEntity);
       return const Right(null);
     } on FirebaseAuthException catch (e) {
-      Failure failure = FirebaseFailure.fromFirebaseException(e);
+      Failure failure = FirebaseFailure.fromException(e);
       return Left(failure);
-    } catch (error) {
-      return Left(Failure(
-          userMessage: LogicStrings.kUnknownErrorMessage,
-          devMessage: error.toString()));
     }
   }
 
@@ -37,12 +33,8 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
           signUpEntity: signUpEntity);
       return const Right(null);
     } on FirebaseAuthException catch (e) {
-      Failure failure = FirebaseFailure.fromFirebaseException(e);
+      Failure failure = FirebaseFailure.fromException(e);
       return Left(failure);
-    } catch (error) {
-      return Left(Failure(
-          userMessage: LogicStrings.kUnknownErrorMessage,
-          devMessage: error.toString()));
     }
   }
 }

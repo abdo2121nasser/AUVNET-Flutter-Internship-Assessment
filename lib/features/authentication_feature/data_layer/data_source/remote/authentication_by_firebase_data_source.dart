@@ -5,15 +5,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../../core/services/exceptions_service.dart';
 
-class AuthenticationByFirebaseDataSource extends BaseAuthenticationRemoteDataSource {
+class AuthenticationByFirebaseDataSource
+    extends BaseAuthenticationRemoteDataSource {
   @override
   Future<void> signIn({required SignInEntity signInEntity}) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: signInEntity.email, password: signInEntity.password);
     } on FirebaseAuthException catch (e) {
-
-      throw ServerException(errorMessage: 'Sign-in failed: ${e.message}',);
+      rethrow;
     }
   }
 
@@ -23,8 +23,7 @@ class AuthenticationByFirebaseDataSource extends BaseAuthenticationRemoteDataSou
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: signUpEntity.email, password: signUpEntity.password);
     } on FirebaseAuthException catch (e) {
-
-      throw ServerException(errorMessage: 'Sign-up failed: ${e.message}',);
+      rethrow;
     }
   }
 }
