@@ -1,4 +1,5 @@
 
+import 'package:auvent_flutter_internship_assessment/configuration/routes.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class SignUpMessageTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: (){
+          AppRoute.router.pushReplacement(AppRoute.signInScreen);
         },
         child: Text(UiStrings.kSignUpMessage,style: AppTextStyles.dmSansBold14(color:kBlueColor ),));
   }
