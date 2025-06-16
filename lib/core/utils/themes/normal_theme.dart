@@ -2,6 +2,8 @@ import 'package:auvent_flutter_internship_assessment/core/utils/colors/colors.da
 import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:flutter/material.dart';
 
+import '../text_styles/style_manager.dart';
+
 ThemeData get getLightTheme {
   return ThemeData(
     brightness: Brightness.light,
@@ -20,6 +22,37 @@ ThemeData get getLightTheme {
       ),
 
     ),
+
+
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: EdgeInsets.symmetric(horizontal: k14H, vertical: k10V),
+      filled: true,
+      fillColor: kTextFieldBackGroundColor,
+      hintStyle: AppTextStyles.mulishLight14(color: kHintColor),
+      labelStyle: AppTextStyles.mulishLight14(color: kHintColor),
+      errorStyle: const TextStyle(color: kRedColor),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderSide:  BorderSide(color: Colors.blue,width: k2H),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderSide:  BorderSide(color: kRedColor,width: k2H),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderSide:  BorderSide(color: kRedColor,width: k2H),
+      ),
+    ),
+
 
     // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     //   backgroundColor: kDarkBlueColor,
