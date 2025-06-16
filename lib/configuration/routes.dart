@@ -1,22 +1,19 @@
 
 
+import 'package:auvent_flutter_internship_assessment/features/welcome_feature/presentation_layer/widgets/welcome_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoute {
-  static const authenticationScreen = '/authentication-screen';
-  static const forgetPasswordScreen = '/forget-password-screen';
-  static const homeScreen = '/home-screen';
-  static const profileScreen = '/profile-screen';
-  static const settingScreen = '/setting-screen';
-  static const guideScreen = '/guide-screen';
+  static const welcomeScreen = '/welcome-screen';
+
 
   static final router = GoRouter(
-      // initialLocation:
+      initialLocation:welcomeScreen
       routes: [
-        // GoRoute(
-        //   path: authenticationScreen,
-        //   builder: (context, state) => AuthenticationScreen(),
-        // ),
+        GoRoute(
+          path: welcomeScreen,
+          builder: (context, state) => WelcomeScreen(),
+        ),
 
       ]
   );
