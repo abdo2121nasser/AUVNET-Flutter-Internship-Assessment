@@ -7,8 +7,8 @@ import '../configuration/routes.dart';
 
 
 
-class DeafGainApp extends StatelessWidget {
-  const DeafGainApp({super.key});
+class TaskApp extends StatelessWidget {
+  const TaskApp({super.key});
 
   @override
   Widget build(BuildContext context) {
