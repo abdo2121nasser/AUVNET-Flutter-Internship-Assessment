@@ -16,7 +16,7 @@ class GetStartButtonWidget extends StatelessWidget {
     return GeneralButtonWidget(
         label: UiStrings.kGetStartWord,
         function: () {
-          AppRoute.router.pushReplacement(AppRoute.authenticationScreen);
+          AppRoute.router.pushReplacement(AppRoute.signInScreen);
         },
         textStyle: AppTextStyles.rubikMedium18(color: kWhiteColor));
   }
