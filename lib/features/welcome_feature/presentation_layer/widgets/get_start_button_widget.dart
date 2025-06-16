@@ -1,4 +1,5 @@
 
+import 'package:auvent_flutter_internship_assessment/configuration/routes.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/colors/colors.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/component/general_button_widget.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
@@ -14,7 +15,9 @@ class GetStartButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GeneralButtonWidget(
         label: UiStrings.kGetStartWord,
-        function: () {},
+        function: () {
+          AppRoute.router.pushReplacement(AppRoute.authenticationScreen);
+        },
         textStyle: AppTextStyles.rubikMedium18(color: kWhiteColor));
   }
 }
