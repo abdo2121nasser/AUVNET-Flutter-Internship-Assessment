@@ -7,6 +7,8 @@ import 'package:auvent_flutter_internship_assessment/features/authentication_fea
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/sign_in_bloc/sign_in_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/authentication_feature/domain_layer/use_cases/sign_up_use_case.dart';
+
 final sl = GetIt.instance;
 
 class ServicesLocator {
@@ -18,6 +20,7 @@ class ServicesLocator {
 
    //useCase
    sl.registerLazySingleton(() => SignInUseCase(baseAuthenticationRepository: sl()));
+   sl.registerLazySingleton(() => SignUpUseCase(baseAuthenticationRepository: sl()));
 
 
    //repositories
