@@ -7,3 +7,8 @@ sealed class UserEvent {}
 
   CreateUserEvent({required this.userEntity});
  }
+ class StoreUserEvent extends UserEvent {
+  final UserEntity userEntity;
+
+  StoreUserEvent({required this.userEntity});
+ }
