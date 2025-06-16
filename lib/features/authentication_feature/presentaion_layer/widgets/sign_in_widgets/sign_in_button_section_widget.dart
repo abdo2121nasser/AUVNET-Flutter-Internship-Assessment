@@ -4,20 +4,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/values/app_size.dart';
+import '../../../domain_layer/entities/sign_in_entity.dart';
 
 
 class SignInButtonSectionWidget extends StatelessWidget {
   const SignInButtonSectionWidget({
     super.key,
-    required this.validate
+    required this.validate,
+    required this.getSignInData
   });
   final bool Function() validate;
+  final SignInEntity Function() getSignInData;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SignInButtonWidget(validate: validate,),
+        SignInButtonWidget(validate: validate,
+        getSignInData: getSignInData,
+        ),
         SizedBox(
           height:k20V,
         ),

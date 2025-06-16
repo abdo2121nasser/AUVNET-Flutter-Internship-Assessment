@@ -1,4 +1,5 @@
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/entities/sign_in_entity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,9 +10,11 @@ import '../../../../../core/utils/text_styles/style_manager.dart';
 class SignInButtonWidget extends StatelessWidget {
   const SignInButtonWidget({
     super.key,
-    required this.validate
+    required this.validate,
+    required this.getSignInData,
   });
   final bool Function() validate;
+  final SignInEntity Function() getSignInData;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,7 @@ class SignInButtonWidget extends StatelessWidget {
         label: UiStrings.kSignInWord,
         function: () {
     if(validate()){
+      SignInEntity signInEntity=getSignInData();
 
     }
         },

@@ -1,4 +1,5 @@
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/images.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/entities/sign_in_entity.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/widgets/sign_in_widgets/sign_in_form_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import '../../../../../core/utils/values/app_size.dart';
 import 'sign_in_button_section_widget.dart';
 
 class SignInScreenBodyWidget extends StatelessWidget {
-   SignInScreenBodyWidget({
+  SignInScreenBodyWidget({
     super.key,
   });
   final GlobalKey<FormState> _globalKey = GlobalKey();
@@ -17,7 +18,7 @@ class SignInScreenBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: k20H),
+      padding: EdgeInsets.symmetric(horizontal: k20H),
       child: Column(
         children: [
           SizedBox(
@@ -32,16 +33,18 @@ class SignInScreenBodyWidget extends StatelessWidget {
             passwordController: _passwordController,
           ),
           SizedBox(
-            height:k20V,
+            height: k20V,
           ),
-          SignInButtonSectionWidget(validate: _validate,)
-
+          SignInButtonSectionWidget(
+            validate: _validate,
+             getSignInData: _getSignInData,
+          )
         ],
       ),
     );
   }
-  bool _validate() =>_globalKey.currentState!.validate();
+
+  bool _validate() => _globalKey.currentState!.validate();
+  SignInEntity _getSignInData() => SignInEntity(
+      email: _emailController.text, password: _passwordController.text);
 }
-
-
-
