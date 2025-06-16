@@ -1,4 +1,6 @@
 import 'package:auvent_flutter_internship_assessment/core/utils/usecase/base_usecase.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/local/base_data_source/base_user_local_data_source.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/local/user_hive_local_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/base_data_source/base_authentication_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/authentication_by_firebase_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/base_data_source/base_user_remote_data_source.dart';
@@ -36,12 +38,14 @@ class ServicesLocator {
     sl.registerLazySingleton<BaseAuthenticationRepository>(() =>
         AuthenticationRepository(baseAuthenticationRemoteDataSource: sl()));
     sl.registerLazySingleton<BaseUserRepository>(
-        () => UserRepository(baseUserRemoteDataSource: sl()));
+        () => UserRepository(baseUserRemoteDataSource: sl(),baseUserLocalDataSource: sl()));
 
     //data source
     sl.registerLazySingleton<BaseAuthenticationRemoteDataSource>(
         () => AuthenticationByFirebaseDataSource());
     sl.registerLazySingleton<BaseUserRemoteDataSource>(
         () => UserFirebaseRemoteDataSource());
+    sl.registerLazySingleton<BaseUserLocalDataSource>(
+        () => UserHiveLocalDataSource());
   }
 }

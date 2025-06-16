@@ -4,6 +4,7 @@ class LogicStrings{
   static const String kUserCollection='user collection';
 
   static const String kUserBox='user box';
+  static const String kUser='user';
 
 
 
