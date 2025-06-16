@@ -32,23 +32,23 @@ ThemeData get getLightTheme {
       labelStyle: AppTextStyles.mulishLight14(color: kHintColor),
       errorStyle: const TextStyle(color: kRedColor),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderRadius: BorderRadius.all(Radius.circular(k10R)),
         borderSide: BorderSide.none,
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderRadius: BorderRadius.all(Radius.circular(k10R)),
         borderSide: BorderSide.none,
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderRadius: BorderRadius.all(Radius.circular(k10R)),
         borderSide:  BorderSide(color: Colors.blue,width: k2H),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderRadius: BorderRadius.all(Radius.circular(k10R)),
         borderSide:  BorderSide(color: kRedColor,width: k2H),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(k12R)),
+        borderRadius: BorderRadius.all(Radius.circular(k10R)),
         borderSide:  BorderSide(color: kRedColor,width: k2H),
       ),
     ),

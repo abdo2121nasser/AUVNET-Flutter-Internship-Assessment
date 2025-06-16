@@ -12,4 +12,14 @@ class UiStrings{
   static const String kGetStartWord='Get Started';
   static const String kNextWord='next';
 
+  static const String kEmailHint='example@gmail.com';
+  static const String kEmailLabel='Email';
+
+  static const String kPasswordLabel='Password';
+  static const String kPasswordHint='12345678Aa!';
+
+  static const String kConfirmPasswordLabel='Confirm Password';
+  static const String kConfirmPasswordHint='12345678Aa!';
+
+
 }
