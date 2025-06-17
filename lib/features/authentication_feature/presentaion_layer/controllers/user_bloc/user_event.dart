@@ -1,14 +1,23 @@
 part of 'user_bloc.dart';
 
 @immutable
-sealed class UserEvent {}
- class CreateUserEvent extends UserEvent {
+class UserEvent extends Equatable {
   final UserEntity userEntity;
 
-  CreateUserEvent({required this.userEntity});
- }
- class StoreUserEvent extends UserEvent {
-  final UserEntity userEntity;
+  const UserEvent({required this.userEntity});
 
-  StoreUserEvent({required this.userEntity});
- }
+  @override
+  List<Object?> get props => [userEntity];
+}
+
+class CreateUserEvent extends UserEvent {
+  const CreateUserEvent({required super.userEntity});
+}
+
+class StoreUserEvent extends UserEvent {
+  const StoreUserEvent({required super.userEntity});
+}
+
+class GetUserEvent extends UserEvent {
+  const GetUserEvent({required super.userEntity});
+}
