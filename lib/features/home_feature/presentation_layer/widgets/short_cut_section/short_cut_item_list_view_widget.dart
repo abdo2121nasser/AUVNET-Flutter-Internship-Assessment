@@ -10,10 +10,9 @@ class ShortCutItemListViewWidget extends StatelessWidget {
   const ShortCutItemListViewWidget({super.key, required this.shorCutEntities});
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.maybeOf(context)!.size.height;
     return SizedBox(
       width: double.infinity,
-      height: height * 0.16,
+      height: k100V,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) =>  ShortCutItemWidget(shortCutEntity: shorCutEntities[index],),
