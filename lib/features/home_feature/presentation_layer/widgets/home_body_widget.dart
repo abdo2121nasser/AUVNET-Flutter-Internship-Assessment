@@ -14,7 +14,7 @@ class HomeBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final double height = MediaQuery.maybeOf(context)!.size.height;
     // 6 sections
-    //remain 3 sections
+    //remain 2 sections
     return Column(
       children: [
         const HelloSectionWidget(),

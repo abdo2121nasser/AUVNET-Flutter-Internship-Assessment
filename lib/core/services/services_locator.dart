@@ -1,4 +1,3 @@
-import 'package:auvent_flutter_internship_assessment/core/utils/usecase/base_usecase.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/local/base_data_source/base_user_local_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/local/user_hive_local_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/remote/base_data_source/base_authentication_remote_data_source.dart';
@@ -15,6 +14,11 @@ import 'package:auvent_flutter_internship_assessment/features/authentication_fea
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/sign_in_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/sign_in_bloc/sign_in_bloc.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/base_data_source/base_service_remote_data_source.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/service_remote_data_source.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/reposities/service_repository.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/reposities/base_service_repository.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/use_cases/get_services_use_case.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/authentication_feature/domain_layer/use_cases/sign_up_use_case.dart';
@@ -42,11 +46,17 @@ class ServicesLocator {
     sl.registerLazySingleton(
         () => IsSignedInUseCase(baseAuthenticationRepository: sl()));
 
+    sl.registerLazySingleton(
+        () => GetServicesUseCase(baseServiceRepository: sl()));
+
     //repositories
     sl.registerLazySingleton<BaseAuthenticationRepository>(() =>
         AuthenticationRepository(baseAuthenticationRemoteDataSource: sl()));
     sl.registerLazySingleton<BaseUserRepository>(() => UserRepository(
         baseUserRemoteDataSource: sl(), baseUserLocalDataSource: sl()));
+
+    sl.registerLazySingleton<BaseServiceRepository>(
+        () => ServiceRepository(baseServiceRemoteDataSource: sl()));
 
     //data source
     sl.registerLazySingleton<BaseAuthenticationRemoteDataSource>(
@@ -55,5 +65,8 @@ class ServicesLocator {
         () => UserFirebaseRemoteDataSource());
     sl.registerLazySingleton<BaseUserLocalDataSource>(
         () => UserHiveLocalDataSource());
+
+    sl.registerLazySingleton<BaseServiceRemoteDataSource>(
+        () => ServiceRemoteDataSource());
   }
 }
