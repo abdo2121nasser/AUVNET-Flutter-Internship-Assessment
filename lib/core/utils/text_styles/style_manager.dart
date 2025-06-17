@@ -10,7 +10,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.medium,
     fontSize: FontSize.s14,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );
@@ -21,7 +20,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.medium,
     fontSize: FontSize.s12,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );
@@ -32,7 +30,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.bold,
     fontSize: FontSize.s12,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );
@@ -42,7 +39,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.bold,
     fontSize: FontSize.s14,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   ); // DM Sans Bold, size 16
@@ -51,7 +47,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.bold,
     fontSize: FontSize.s16,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );
@@ -62,7 +57,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.medium,
     fontSize: FontSize.s28,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );
@@ -75,7 +69,6 @@ class AppTextStyles {
     color: color,
     height: k2V,
 
-    // overflow: TextOverflow.ellipsis,
   );
 
   // Rubik Medium, size 18
@@ -84,7 +77,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.medium,
     fontSize: FontSize.s18,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );
@@ -94,7 +86,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.bold,
     fontSize: FontSize.s30,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );
@@ -105,7 +96,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.light,
     fontSize: FontSize.s14,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );
@@ -116,7 +106,6 @@ class AppTextStyles {
     fontWeight: FontWeightManager.regular,
     fontSize: FontSize.s12,
     color: color,
-    overflow: TextOverflow.ellipsis,
     height: k2V,
 
   );

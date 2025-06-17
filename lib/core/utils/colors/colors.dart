@@ -8,4 +8,5 @@ const Color kGreyColor = Color(0xff677294);
 const Color kHintColor = Color(0xff000000);
 const Color kTextFieldBackGroundColor = Color(0xffC4C4C4);
 const Color kRedColor = Color(0xffe60000);
+const Color kYellowColor = Color(0xffFFDE59);
 

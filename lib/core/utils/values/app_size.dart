@@ -22,6 +22,7 @@ final double k14H = 14.w;
 final double k16H = 16.w;
 final double k18H = 18.w;
 final double k20H = 20.w;
+final double k30H = 30.w;
 final double k40H = 40.w;
 
 final double k5R = 5.r;
