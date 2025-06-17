@@ -14,7 +14,7 @@ class PopularBloc extends Bloc<PopularEvent, PopularState> {
   static PopularBloc get(context) => BlocProvider.of(context);
   final GetPopularUseCase getPopularUseCase;
   PopularBloc({required this.getPopularUseCase}) : super(const PopularState()) {
-    on<PopularEvent>(_getPopulars);
+    on<GetPopularEvent>(_getPopulars);
   }
   Future<void> _getPopulars(event, emit) async {
     emit(const PopularState(getPopularsState: RequestStateEnum.loading));

@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/values/app_size.dart';
 
 class PopularBorderedImageWidget extends StatelessWidget {
+  final String imageLink;
   const PopularBorderedImageWidget({
-    super.key,
+    super.key, required this.imageLink,
   });
 
   @override
@@ -18,7 +19,7 @@ class PopularBorderedImageWidget extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(k10R),
           border: Border.all(color: kGreyColor, width: k1H)),
-      child: Image.network('https://laffahrestaurants.com/images/logo.png'),
+      child: Image.network(imageLink),
     );
   }
 }

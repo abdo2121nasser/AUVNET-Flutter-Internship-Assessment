@@ -5,13 +5,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/values/app_size.dart';
+import '../../../domain_layer/entities/popular_entity.dart';
 
 
 
 
 class PopularItemWidget extends StatelessWidget {
+  final PopularEntity popularEntity;
   const PopularItemWidget({
-    super.key,
+    super.key, required this.popularEntity,
   });
   @override
   Widget build(BuildContext context) {
@@ -20,15 +22,15 @@ class PopularItemWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          PopularBorderedImageWidget(),
+          PopularBorderedImageWidget(imageLink: popularEntity.imageLink,),
           Flexible(
             child: Text(
-              'Allo BeiruBeiruBeiruBeiru',
+              popularEntity.name,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.dmSansMedium12(),
             ),
           ),
-          PopularInfoWidget()
+          PopularInfoWidget(time: popularEntity.time,)
         ],
       ),
     );

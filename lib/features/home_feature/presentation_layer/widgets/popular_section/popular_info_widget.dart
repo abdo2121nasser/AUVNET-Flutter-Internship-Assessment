@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/values/app_size.dart';
 
 class PopularInfoWidget extends StatelessWidget {
+  final String time;
   const PopularInfoWidget({
-    super.key,
+    super.key, required this.time,
   });
 
   @override
@@ -25,7 +26,7 @@ class PopularInfoWidget extends StatelessWidget {
         ),
         Flexible(
           child: Text(
-            '23 mins',
+            '$time mins',
             overflow: TextOverflow.ellipsis,
             style: AppTextStyles.dmSansMedium10(color: kGreyColor),
           ),
