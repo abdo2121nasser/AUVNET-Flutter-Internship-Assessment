@@ -80,4 +80,15 @@ class AppTextStyles {
     height: k2V,
 
   );
+
+  // Poppins regular, size 12
+  static TextStyle poppinsRegular12({Color color = kBlackColor}) => TextStyle(
+    fontFamily: FontFamily.poppins,
+    fontWeight: FontWeightManager.regular,
+    fontSize: FontSize.s12,
+    color: color,
+    overflow: TextOverflow.ellipsis,
+    height: k2V,
+
+  );
 }

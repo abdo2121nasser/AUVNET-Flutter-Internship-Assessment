@@ -118,6 +118,11 @@ flutter:
         - asset: assets/fonts/mulish/Mulish-Light.ttf
           weight: 300
 
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppin/Poppins-Regular.ttf
+          weight: 400
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

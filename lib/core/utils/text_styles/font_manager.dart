@@ -6,6 +6,7 @@ class FontFamily {
   static const String dmSans = 'DM Sans';
   static const String rubik = 'Rubik';
   static const String mulish = 'Mulish';
+  static const String poppins = 'Poppins';
 }
 
 class FontWeightManager {
