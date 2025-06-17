@@ -21,7 +21,7 @@ class HomeBodyWidget extends StatelessWidget {
     //remain 2 sections
     return Column(
       children: [
-        const HelloSectionWidget(),
+         HelloSectionWidget(),
         SizedBox(
           height: k2V,
         ),

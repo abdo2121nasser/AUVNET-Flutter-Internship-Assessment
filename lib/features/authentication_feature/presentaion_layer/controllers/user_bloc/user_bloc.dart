@@ -87,7 +87,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   void _getLocalUser(event, emit) {
     emit(state.copyWith(getLocalUserState: RequestStateEnum.loading));
-    final result = getLocalUserUseCase(event.userDocId);
+    final result = getLocalUserUseCase(null);
     result.fold((failure) {
       debugPrint(failure.devMessage);
       showToastMessage(message: failure.userMessage);

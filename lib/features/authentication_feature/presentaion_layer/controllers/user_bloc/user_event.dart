@@ -28,8 +28,6 @@ class GetRemoteUserEvent extends UserEvent {
 }
 
 class GetLocalUserEvent extends UserEvent {
-  final UserEntity userEntity;
-  GetLocalUserEvent({required this.userEntity});
   @override
-  List<Object?> get props => [userEntity];
+  List<Object?> get props => [];
 }

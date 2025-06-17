@@ -1,17 +1,15 @@
-
+import 'package:auvent_flutter_internship_assessment/core/utils/enums/request_state_enum.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/colors/gradients.dart';
+import '../../../../authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
 import 'hello_section_image_widget.dart';
 import 'hello_section_intro_widget.dart';
 
-
 class HelloSectionWidget extends StatelessWidget {
   const HelloSectionWidget({super.key});
-
-
-
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.maybeOf(context)!.size.height;
@@ -30,9 +28,19 @@ class HelloSectionWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const HelloSectionIntroWidget(),
-          SizedBox(width: k10H), // add spacing if needed
-          HelloSectionImageWidget(height: height),
+          BlocBuilder<UserBloc, UserState>(builder: (context, state) {
+            if (state.getLocalUserState == RequestStateEnum.success) {
+              return HelloSectionIntroWidget(
+                userEntity: state.userEntity!,
+              );
+            } else {
+              return SizedBox(
+                width: k120H,
+              );
+            }
+          }),
+          SizedBox(width: k10H), //
+          const HelloSectionImageWidget() // add spacing if needed
         ],
       ),
     );
