@@ -3,8 +3,11 @@ import 'package:auvent_flutter_internship_assessment/features/home_feature/prese
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/short_cut_section/short_cut_section_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/services/services_locator.dart';
 import '../../../../core/utils/values/app_size.dart';
+import '../controllers/service_bloc/service_bloc.dart';
 import 'hello_section/hello_section_widget.dart';
 
 class HomeBodyWidget extends StatelessWidget {
@@ -12,7 +15,10 @@ class HomeBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.maybeOf(context)!.size.height;
+    final double height = MediaQuery
+        .maybeOf(context)!
+        .size
+        .height;
     // 6 sections
     //remain 2 sections
     return Column(
@@ -21,8 +27,11 @@ class HomeBodyWidget extends StatelessWidget {
         SizedBox(
           height: k2V,
         ),
-        const ServiceSectionWidget(),
-        const ShotCutSectionWidget(),
+        BlocProvider(
+          create: (context) => sl<ServiceBloc>()..add(GetServicesEvent()),
+          child: const ServiceSectionWidget(),
+        ),
+         ShotCutSectionWidget(),
         PopularSectionWidget()
       ],
     );

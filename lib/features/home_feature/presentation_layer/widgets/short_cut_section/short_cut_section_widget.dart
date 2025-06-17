@@ -5,9 +5,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/values/app_size.dart';
+import '../../../domain_layer/entities/short_cut_entity.dart';
 
 class ShotCutSectionWidget extends StatelessWidget {
-  const ShotCutSectionWidget({super.key});
+   ShotCutSectionWidget({super.key});
+  final List<ShortCutEntity> _shortCutEntity=[
+    ShortCutEntity(label: 'Past orders', iconData:  Icons.event_note),
+    ShortCutEntity(label: 'Super Saver', iconData:  Icons.local_offer),
+    ShortCutEntity(label: 'Must-tries', iconData:  Icons.auto_awesome),
+    ShortCutEntity(label: 'Give Back', iconData:  Icons.volunteer_activism),
+    ShortCutEntity(label: 'Best Sellers', iconData:  Icons.star),
+
+  ];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +34,7 @@ class ShotCutSectionWidget extends StatelessWidget {
           SizedBox(
             height: k5V,
           ),
-          const ShortCutItemListViewWidget()
+           ShortCutItemListViewWidget(shorCutEntities: _shortCutEntity,)
         ],
       ),
     );

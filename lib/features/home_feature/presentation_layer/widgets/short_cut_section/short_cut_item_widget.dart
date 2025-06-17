@@ -4,10 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/values/app_size.dart';
+import '../../../domain_layer/entities/short_cut_entity.dart';
 
 class ShortCutItemWidget extends StatelessWidget {
+  final ShortCutEntity shortCutEntity;
   const ShortCutItemWidget({
-    super.key,
+    super.key,required this.shortCutEntity,
   });
 
   @override
@@ -17,12 +19,12 @@ class ShortCutItemWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const ShortCutIconWidget(
-            iconData: Icons.event_note,
+           ShortCutIconWidget(
+            iconData:shortCutEntity.iconData,
           ),
           Flexible(
             child: Text(
-              'passssst order',
+              shortCutEntity.label,
               overflow: TextOverflow.clip,
               textAlign: TextAlign.center,
               style: AppTextStyles.dmSansMedium12(),

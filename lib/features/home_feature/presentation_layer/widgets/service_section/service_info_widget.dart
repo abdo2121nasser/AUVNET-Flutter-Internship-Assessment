@@ -32,7 +32,7 @@ class ServiceInfoWidget extends StatelessWidget {
           Text(
             category,
             overflow: TextOverflow.ellipsis,
-            style: AppTextStyles.dmSansBold20(),
+            style: AppTextStyles.dmSansBold14(),
           ),
         ],
       ),
