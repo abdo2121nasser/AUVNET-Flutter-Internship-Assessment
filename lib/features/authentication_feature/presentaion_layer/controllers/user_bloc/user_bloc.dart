@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:auvent_flutter_internship_assessment/core/utils/component/toast_message_function.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/enums/request_state_enum.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/create_user_use_case.dart';
-import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/get_user_use_case.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/get_remote_user_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/store_user_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:either_dart/either.dart';
@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../domain_layer/entities/user_entity.dart';
+import '../../../domain_layer/use_cases/get_local_user_use_case.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
@@ -20,16 +21,19 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   static UserBloc get(context) => BlocProvider.of(context);
   final CreateUserUseCase createUserUseCase;
   final StoreUserUseCase storeUserUseCase;
-  final GetUserUseCase getUserUseCase;
+  final GetRemoteUserUseCase getRemoteUserUseCase;
+  final GetLocalUserUseCase getLocalUserUseCase;
 
   UserBloc(
       {required this.createUserUseCase,
       required this.storeUserUseCase,
-      required this.getUserUseCase})
+      required this.getRemoteUserUseCase,
+      required this.getLocalUserUseCase})
       : super(UserState(createUserState: RequestStateEnum.init)) {
     on<CreateUserEvent>(_createUser);
     on<StoreUserEvent>(_storeUser);
-    on<GetUserEvent>(_getUser);
+    on<GetRemoteUserEvent>(_getRemoteUser);
+    on<GetLocalUserEvent>(_getLocalUser);
   }
 
   Future<void> _createUser(event, emit) async {
@@ -64,18 +68,37 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     });
   }
 
-  Future<void> _getUser(event, emit) async {
-    emit(state.copyWith(
-        getUserState: RequestStateEnum.loading));
-    final result = await getUserUseCase(event.userDocId);
+  Future<void> _getRemoteUser(event, emit) async {
+    emit(state.copyWith(getRemoteUserState: RequestStateEnum.loading));
+    final result = await getRemoteUserUseCase(event.userDocId);
     result.fold((failure) {
       debugPrint(failure.devMessage);
       showToastMessage(message: failure.userMessage);
       emit(state.copyWith(
-          getUserState: RequestStateEnum.error,
+          getRemoteUserState: RequestStateEnum.error,
           errorMessage: failure.userMessage));
     }, (success) {
-      emit(state.copyWith(getUserState: RequestStateEnum.success,userEntity: success),);
+      emit(
+        state.copyWith(
+            getRemoteUserState: RequestStateEnum.success, userEntity: success),
+      );
+    });
+  }
+
+  void _getLocalUser(event, emit) {
+    emit(state.copyWith(getLocalUserState: RequestStateEnum.loading));
+    final result = getLocalUserUseCase(event.userDocId);
+    result.fold((failure) {
+      debugPrint(failure.devMessage);
+      showToastMessage(message: failure.userMessage);
+      emit(state.copyWith(
+          getLocalUserState: RequestStateEnum.error,
+          errorMessage: failure.userMessage));
+    }, (success) {
+      emit(
+        state.copyWith(
+            getLocalUserState: RequestStateEnum.success, userEntity: success),
+      );
     });
   }
 }

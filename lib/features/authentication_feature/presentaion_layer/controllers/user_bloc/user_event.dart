@@ -20,9 +20,16 @@ class StoreUserEvent extends UserEvent {
   List<Object?> get props => [userEntity];
 }
 
-class GetUserEvent extends UserEvent {
+class GetRemoteUserEvent extends UserEvent {
   final String userDocId;
-  GetUserEvent({required this.userDocId});
+  GetRemoteUserEvent({required this.userDocId});
   @override
   List<Object?> get props => [userDocId];
+}
+
+class GetLocalUserEvent extends UserEvent {
+  final UserEntity userEntity;
+  GetLocalUserEvent({required this.userEntity});
+  @override
+  List<Object?> get props => [userEntity];
 }

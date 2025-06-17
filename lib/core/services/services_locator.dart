@@ -41,7 +41,7 @@ class ServicesLocator {
     sl.registerFactory(() => SignInBloc(signInUseCase: sl()));
     sl.registerFactory(() => SignUpBloc(signUpUseCase: sl()));
     sl.registerFactory(() => UserBloc(
-        createUserUseCase: sl(), storeUserUseCase: sl(), getUserUseCase: sl()));
+        createUserUseCase: sl(), storeUserUseCase: sl(), getRemoteUserUseCase: sl(),getLocalUserUseCase: sl()));
     sl.registerFactory(() => ServiceBloc(getServicesUseCase: sl()));
     sl.registerFactory(() => PopularBloc(getPopularUseCase: sl()));
 
