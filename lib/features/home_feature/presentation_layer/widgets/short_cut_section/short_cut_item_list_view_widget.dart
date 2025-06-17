@@ -11,7 +11,7 @@ class ShortCutItemListViewWidget extends StatelessWidget {
     final double height = MediaQuery.maybeOf(context)!.size.height;
     return SizedBox(
       width: double.infinity,
-      height: height * 0.17,
+      height: height * 0.16,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => const ShortCutItemWidget(),

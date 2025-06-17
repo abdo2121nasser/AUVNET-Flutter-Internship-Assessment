@@ -20,7 +20,7 @@ class ShortCutIconWidget extends StatelessWidget {
         child: Icon(
           iconData,
           color: kPurpleColor,
-          size: k40V,
+          size: k30V,
         ),
       ),
     );

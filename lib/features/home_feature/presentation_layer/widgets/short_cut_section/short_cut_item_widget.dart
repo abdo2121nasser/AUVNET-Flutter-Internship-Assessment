@@ -20,10 +20,13 @@ class ShortCutItemWidget extends StatelessWidget {
           const ShortCutIconWidget(
             iconData: Icons.event_note,
           ),
-          Text(
-            'passssst order',
-            textAlign: TextAlign.center,
-            style: AppTextStyles.dmSansMedium12(),
+          Flexible(
+            child: Text(
+              'passssst order',
+              overflow: TextOverflow.clip,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.dmSansMedium12(),
+            ),
           )
         ],
       ),

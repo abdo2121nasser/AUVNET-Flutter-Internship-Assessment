@@ -22,6 +22,14 @@ class AppTextStyles {
     color: color,
     height: k2V,
 
+  ); // DM Sans Medium, size 10
+  static TextStyle dmSansMedium10({Color color = kBlackColor}) => TextStyle(
+    fontFamily: FontFamily.dmSans,
+    fontWeight: FontWeightManager.medium,
+    fontSize: FontSize.s12,
+    color: color,
+    height: k2V,
+
   );
 
   // DM Sans Bold, size 12

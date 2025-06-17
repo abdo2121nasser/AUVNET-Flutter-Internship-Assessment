@@ -41,5 +41,6 @@ class UiStrings{
 
   static const String kServiceWord='Service';
   static const String kShortCutWord='Shortcuts';
+  static const String kPopularSectionWord='Popular restaurants nearby';
 
 }

@@ -13,24 +13,30 @@ class ServiceInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        DecoratedBox(
-          decoration: BoxDecoration(
-              color: kPurpleColor, borderRadius: BorderRadius.circular(k20R)),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: k5H, vertical: k5V),
-            child: Text(
-              'Up to 50%',
-              style: AppTextStyles.dmSansMedium12(color: kWhiteColor),
+    return SizedBox(
+      width: k80H,
+      child: Column(
+        children: [
+          DecoratedBox(
+            decoration: BoxDecoration(
+                color: kPurpleColor, borderRadius: BorderRadius.circular(k20R)),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: k5H, vertical: k5V),
+              child: Text(
+                'Up to 100%',
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyles.dmSansMedium12(color: kWhiteColor),
+              ),
             ),
           ),
-        ),
-        Text(
-          'Food',
-          style: AppTextStyles.dmSansBold20(),
-        ),
-      ],
+          Text(
+            'Food',                overflow: TextOverflow.ellipsis,
+
+
+            style: AppTextStyles.dmSansBold20(),
+          ),
+        ],
+      ),
     );
   }
 }
