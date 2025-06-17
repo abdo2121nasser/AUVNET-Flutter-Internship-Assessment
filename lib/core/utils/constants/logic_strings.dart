@@ -9,6 +9,7 @@ class LogicStrings{
   static const String kUser='user';
 
   static const String kServicesCollection='services collection';
+  static const String kPopularsCollection='populars collection';
 
 
 }
