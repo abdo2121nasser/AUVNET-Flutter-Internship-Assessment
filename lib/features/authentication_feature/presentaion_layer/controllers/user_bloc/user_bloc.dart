@@ -21,36 +21,41 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final StoreUserUseCase storeUserUseCase;
 
   UserBloc({required this.createUserUseCase, required this.storeUserUseCase})
-      : super(UserState(userState: RequestStateEnum.init)) {
+      : super(UserState(createUserState: RequestStateEnum.init)) {
     on<CreateUserEvent>(_createUser);
     on<StoreUserEvent>(_storeUser);
   }
 
   Future<void> _createUser(event, emit) async {
-    emit(state.copyWith(userState: RequestStateEnum.loading));
+    emit(state.copyWith(
+        createUserState: RequestStateEnum.loading,
+        userEntity: event.userEntity));
     final result = await createUserUseCase(event.userEntity);
     result.fold((failure) {
       debugPrint(failure.devMessage);
       showToastMessage(message: failure.userMessage);
       emit(state.copyWith(
-          userState: RequestStateEnum.error,
+          createUserState: RequestStateEnum.error,
           errorMessage: failure.userMessage));
     }, (success) {
-      emit(state.copyWith(userState: RequestStateEnum.success));
+      emit(state.copyWith(createUserState: RequestStateEnum.success));
     });
   }
 
   Future<void> _storeUser(event, emit) async {
-    emit(state.copyWith(userState: RequestStateEnum.loading));
+    emit(state.copyWith(
+        storeUserState: RequestStateEnum.loading,
+        userEntity: event.userEntity));
     final result = await storeUserUseCase(event.userEntity);
     result.fold((failure) {
       debugPrint(failure.devMessage);
       showToastMessage(message: failure.userMessage);
       emit(state.copyWith(
-          userState: RequestStateEnum.error,
+          storeUserState: RequestStateEnum.error,
           errorMessage: failure.userMessage));
     }, (success) {
-      emit(state.copyWith(userState: RequestStateEnum.success));
+      emit(state.copyWith(storeUserState: RequestStateEnum.success));
+
     });
   }
 }
