@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'hello_section_widget.dart';
+import 'hello_section/hello_section_widget.dart';
 
 
 class HomeBodyWidget extends StatelessWidget {

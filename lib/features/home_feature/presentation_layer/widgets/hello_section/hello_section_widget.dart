@@ -2,9 +2,11 @@
 import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/colors/gradients.dart';
+import '../../../../../core/utils/colors/gradients.dart';
 import 'hello_section_image_widget.dart';
 import 'hello_section_intro_widget.dart';
+
+
 class HelloSectionWidget extends StatelessWidget {
   const HelloSectionWidget({super.key});
 
