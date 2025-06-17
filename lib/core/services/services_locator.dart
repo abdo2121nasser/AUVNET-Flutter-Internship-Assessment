@@ -11,6 +11,7 @@ import 'package:auvent_flutter_internship_assessment/features/authentication_fea
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/repositories/base_user_repository.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/create_user_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/get_user_use_case.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/is_signed_in_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/sign_in_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/sign_in_bloc/sign_in_bloc.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
@@ -27,8 +28,8 @@ class ServicesLocator {
     //blocs
     sl.registerFactory(() => SignInBloc(signInUseCase: sl()));
     sl.registerFactory(() => SignUpBloc(signUpUseCase: sl()));
-    sl.registerFactory(
-        () => UserBloc(createUserUseCase: sl(), storeUserUseCase: sl(),getUserUseCase: sl()));
+    sl.registerFactory(() => UserBloc(
+        createUserUseCase: sl(), storeUserUseCase: sl(), getUserUseCase: sl()));
 
     //useCase
     sl.registerLazySingleton(
@@ -38,6 +39,8 @@ class ServicesLocator {
     sl.registerLazySingleton(() => CreateUserUseCase(baseUserRepository: sl()));
     sl.registerLazySingleton(() => StoreUserUseCase(baseUserRepository: sl()));
     sl.registerLazySingleton(() => GetUserUseCase(baseUserRepository: sl()));
+    sl.registerLazySingleton(
+        () => IsSignedInUseCase(baseAuthenticationRepository: sl()));
 
     //repositories
     sl.registerLazySingleton<BaseAuthenticationRepository>(() =>

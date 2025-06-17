@@ -33,4 +33,7 @@ class AuthenticationByFirebaseDataSource
           errorMessage: LogicStrings.kUserNotFoundErrorMessage);
     }
   }
+
+  @override
+  bool isSignedIn() => FirebaseAuth.instance.currentUser != null;
 }

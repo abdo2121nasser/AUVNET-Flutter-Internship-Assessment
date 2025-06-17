@@ -37,4 +37,10 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
       return Left(failure);
     }
   }
+  @override
+   bool isSignedIn()  {
+    return baseAuthenticationRemoteDataSource.isSignedIn();
+  }
+
+
 }
