@@ -31,59 +31,29 @@ class _SignInScreenBodyWidgetState extends State<SignInScreenBodyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SignInBloc, SignInState>(
-      listener: (context, state) {
-        if (state is SignInSuccessState) {
-          UserBloc.get(context).add(GetUserEvent(userDocId: state.useDcoId));
-        }
-      },
-      child: MultiBlocListener(
-        listeners: [
-          BlocListener<UserBloc, UserState>(
-            listenWhen: (previous, current) =>
-                previous.getUserState != current.getUserState,
-            listener: (context, state) {
-              if (state.getUserState == RequestStateEnum.success) {
-                UserBloc.get(context)
-                    .add(StoreUserEvent(userEntity: state.userEntity!));
-              }
-            },
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: k20H),
+      child: Column(
+        children: [
+          SizedBox(
+            height: MediaQuery.maybeOf(context)!.size.height * 0.01,
           ),
-          BlocListener<UserBloc, UserState>(
-            listenWhen: (previous, current) =>
-                previous.storeUserState != current.storeUserState,
-            listener: (context, state) {
-              if (state.storeUserState == RequestStateEnum.success) {
-                AppRoute.router.pushReplacement(AppRoute.mainShellScreen);
-              }
-            },
+          const LocalImageAssetsWidget(
+            imagePath: kNawelImage,
           ),
+          SignInFormWidget(
+            globalKey: _globalKey,
+            emailController: _emailController,
+            passwordController: _passwordController,
+          ),
+          SizedBox(
+            height: k20V,
+          ),
+          SignInButtonSectionWidget(
+            validate: _validate,
+            getSignInData: _getSignInData,
+          )
         ],
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: k20H),
-          child: Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.maybeOf(context)!.size.height * 0.01,
-              ),
-              const LocalImageAssetsWidget(
-                imagePath: kNawelImage,
-              ),
-              SignInFormWidget(
-                globalKey: _globalKey,
-                emailController: _emailController,
-                passwordController: _passwordController,
-              ),
-              SizedBox(
-                height: k20V,
-              ),
-              SignInButtonSectionWidget(
-                validate: _validate,
-                getSignInData: _getSignInData,
-              )
-            ],
-          ),
-        ),
       ),
     );
   }
