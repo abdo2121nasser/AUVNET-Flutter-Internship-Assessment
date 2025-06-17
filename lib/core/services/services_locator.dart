@@ -14,16 +14,22 @@ import 'package:auvent_flutter_internship_assessment/features/authentication_fea
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/sign_in_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/sign_in_bloc/sign_in_bloc.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/base_data_source/base_popular_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/base_data_source/base_service_remote_data_source.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/popular_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/service_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/reposities/service_repository.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/reposities/base_service_repository.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/use_cases/get_services_use_case.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/controllers/popular_bloc/popular_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/authentication_feature/domain_layer/use_cases/sign_up_use_case.dart';
 import '../../features/authentication_feature/domain_layer/use_cases/store_user_use_case.dart';
 import '../../features/authentication_feature/presentaion_layer/controllers/sign_up_bloc/sign_up_bloc.dart';
+import '../../features/home_feature/data_layer/reposities/popular_repository.dart';
+import '../../features/home_feature/domain_layer/reposities/base_popular_repository.dart';
+import '../../features/home_feature/domain_layer/use_cases/get_popular_use_case.dart';
 import '../../features/home_feature/presentation_layer/controllers/service_bloc/service_bloc.dart';
 
 final sl = GetIt.instance;
@@ -36,6 +42,7 @@ class ServicesLocator {
     sl.registerFactory(() => UserBloc(
         createUserUseCase: sl(), storeUserUseCase: sl(), getUserUseCase: sl()));
     sl.registerFactory(() => ServiceBloc(getServicesUseCase: sl()));
+    sl.registerFactory(() => PopularBloc(getPopularUseCase: sl()));
 
     //useCase
     sl.registerLazySingleton(
@@ -50,6 +57,8 @@ class ServicesLocator {
 
     sl.registerLazySingleton(
         () => GetServicesUseCase(baseServiceRepository: sl()));
+    sl.registerLazySingleton(
+        () => GetPopularUseCase(basePopularRepository: sl()));
 
     //repositories
     sl.registerLazySingleton<BaseAuthenticationRepository>(() =>
@@ -59,6 +68,8 @@ class ServicesLocator {
 
     sl.registerLazySingleton<BaseServiceRepository>(
         () => ServiceRepository(baseServiceRemoteDataSource: sl()));
+    sl.registerLazySingleton<BasePopularRepository>(
+        () => PopularRepository(basePopularRemoteDataSource: sl()));
 
     //data source
     sl.registerLazySingleton<BaseAuthenticationRemoteDataSource>(
@@ -70,5 +81,7 @@ class ServicesLocator {
 
     sl.registerLazySingleton<BaseServiceRemoteDataSource>(
         () => ServiceRemoteDataSource());
+    sl.registerLazySingleton<BasePopularRemoteDataSource>(
+        () => PopularRemoteDataSource());
   }
 }
