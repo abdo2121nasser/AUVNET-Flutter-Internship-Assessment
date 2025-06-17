@@ -38,7 +38,7 @@ class SignUpFormWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is SignUpSuccessState) {
           UserBloc.get(context)
-              .add(CreateUserEvent(userEntity: _getUserData()));
+              .add(CreateUserEvent(userEntity: _getUserData(state.useDcoId)));
         }
       },
       child: BlocListener<UserBloc, UserState>(
@@ -106,12 +106,11 @@ class SignUpFormWidget extends StatelessWidget {
     );
   }
 
-  UserEntity _getUserData() =>
+  UserEntity _getUserData(String userDocId) =>
       UserEntity(
-        docId: _getUserId,
+        docId: userDocId,
         name: nameController.text,
         email: emailController.text,
       );
 
-  String get _getUserId => FirebaseAuth.instance.currentUser!.uid;
 }

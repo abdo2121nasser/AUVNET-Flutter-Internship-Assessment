@@ -20,7 +20,7 @@ class UserFirebaseRemoteDataSource extends BaseUserRemoteDataSource {
       if(result.data()!=null) {
         return UserModel.fromJson(result.data()!, result.id);
       }else {
-        throw const ServerException(errorMessage: 'User not found');
+        throw const ServerException(errorMessage: LogicStrings.kUserNotFoundErrorMessage);
       }
   }
 }

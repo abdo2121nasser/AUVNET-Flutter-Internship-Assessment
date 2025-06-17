@@ -1,6 +1,7 @@
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/entities/sign_in_entity.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/sign_in_bloc/sign_in_bloc.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class SignInButtonWidget extends StatelessWidget {
         function: () {
     if(validate()){
       SignInEntity signInEntity=getSignInData();
-      sl<SignInBloc>().add(SignInProcessEvent(signInEntity: signInEntity));
+      SignInBloc.get(context).add(SignInProcessEvent(signInEntity: signInEntity));
 
     }
         },

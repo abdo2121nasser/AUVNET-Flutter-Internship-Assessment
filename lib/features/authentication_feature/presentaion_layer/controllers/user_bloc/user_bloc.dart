@@ -22,7 +22,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final StoreUserUseCase storeUserUseCase;
   final GetUserUseCase getUserUseCase;
 
-  UserBloc({required this.createUserUseCase, required this.storeUserUseCase,required this.getUserUseCase})
+  UserBloc(
+      {required this.createUserUseCase,
+      required this.storeUserUseCase,
+      required this.getUserUseCase})
       : super(UserState(createUserState: RequestStateEnum.init)) {
     on<CreateUserEvent>(_createUser);
     on<StoreUserEvent>(_storeUser);
@@ -49,7 +52,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(state.copyWith(
         storeUserState: RequestStateEnum.loading,
         userEntity: event.userEntity));
-    final result = await storeUserUseCase(event.userEntity);
+    final result = await storeUserUseCase(event.userDocId);
     result.fold((failure) {
       debugPrint(failure.devMessage);
       showToastMessage(message: failure.userMessage);
@@ -63,9 +66,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   Future<void> _getUser(event, emit) async {
     emit(state.copyWith(
-        getUserState: RequestStateEnum.loading,
-        userEntity: event.userEntity));
-    final result = await getUserUseCase(event.userEntity);
+        getUserState: RequestStateEnum.loading));
+    final result = await getUserUseCase(event.userDocId);
     result.fold((failure) {
       debugPrint(failure.devMessage);
       showToastMessage(message: failure.userMessage);
