@@ -1,3 +1,4 @@
+import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,7 +34,7 @@ class FirebaseFailure extends Failure {
     } else {
       return FirebaseFailure(
         devMessage: exception.toString(),
-        userMessage: "An unexpected error occurred. Please try again later.",
+        userMessage: UiStrings.kUnknownErrorMessage
       );
     }
   }

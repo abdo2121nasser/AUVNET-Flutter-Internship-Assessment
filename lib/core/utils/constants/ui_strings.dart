@@ -30,6 +30,7 @@ class UiStrings{
   static const String kSignUpWord='Sign Up';
   static const String kSignUpMessage='Already have an account';
 
+  static const String kUnknownErrorMessage='An unexpected error occurred. Please try again later.';
 
 
 }

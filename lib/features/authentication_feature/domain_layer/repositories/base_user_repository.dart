@@ -7,6 +7,7 @@ abstract class BaseUserRepository{
 
  Future<Either<Failure,void>> createUser({required UserEntity userEntity});
  Future<Either<Failure,void>> storeUser({required UserEntity userEntity});
+ Future<Either<Failure,UserEntity>> getUser({required String userDocId});
 
 
 

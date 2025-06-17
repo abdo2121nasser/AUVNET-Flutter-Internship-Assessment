@@ -1,7 +1,10 @@
 import 'package:auvent_flutter_internship_assessment/core/services/fire_base_failure_service.dart';
+import 'package:auvent_flutter_internship_assessment/core/utils/constants/logic_strings.dart';
+import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/data_source/local/base_data_source/base_user_local_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/data_layer/models/user_model.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/repositories/base_user_repository.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 
 import '../../../../core/services/hive_failure_service.dart';
@@ -37,5 +40,21 @@ class UserRepository extends BaseUserRepository {
       return Left(HiveFailure.fromException(error));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> getUser({required String userDocId}) async {
+    try {
+      final user = await baseUserRemoteDataSource.getUser(userDocId: userDocId);
+      return Right(user);
+    } on FirebaseException catch (e) {
+      return Left(FirebaseFailure.fromException(e));
+    } catch (e) {
+      return Left(Failure(
+        devMessage: e.toString(),
+        userMessage: UiStrings.kUnknownErrorMessage,
+      ));
+    }
+  }
+
 
 }
