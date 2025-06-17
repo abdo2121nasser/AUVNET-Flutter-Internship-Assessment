@@ -1,5 +1,6 @@
 class LogicStrings{
   static const String kUnknownErrorMessage='Unknown error';
+  static const String kUserNotFoundErrorMessage='User not found';
 
   static const String kUserCollection='user collection';
 

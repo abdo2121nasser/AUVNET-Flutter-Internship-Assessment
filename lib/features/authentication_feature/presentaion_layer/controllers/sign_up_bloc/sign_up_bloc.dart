@@ -22,7 +22,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     result.fold((failure) {
       emit(SignUpErrorState(error: failure.userMessage));
     }, (success) {
-      emit(SignUpSuccessState());
+      emit(SignUpSuccessState(useDcoId: success));
 
 
     });

@@ -4,26 +4,33 @@ import 'package:auvent_flutter_internship_assessment/features/authentication_fea
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../../core/services/exceptions_service.dart';
+import '../../../../../core/utils/constants/logic_strings.dart';
 
 class AuthenticationByFirebaseDataSource
     extends BaseAuthenticationRemoteDataSource {
   @override
-  Future<void> signIn({required SignInEntity signInEntity}) async {
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: signInEntity.email, password: signInEntity.password);
-    } on FirebaseAuthException catch (e) {
-      rethrow;
+  Future<String> signIn({required SignInEntity signInEntity}) async {
+    final result = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: signInEntity.email, password: signInEntity.password);
+    final user = result.user;
+    if (user != null) {
+      return user.uid;
+    } else {
+      throw const ServerException(
+          errorMessage: LogicStrings.kUserNotFoundErrorMessage);
     }
   }
 
   @override
-  Future<void> signUp({required SignUpEntity signUpEntity}) async {
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: signUpEntity.email, password: signUpEntity.password);
-    } on FirebaseAuthException catch (e) {
-      rethrow;
+  Future<String> signUp({required SignUpEntity signUpEntity}) async {
+    final result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: signUpEntity.email, password: signUpEntity.password);
+    final user = result.user;
+    if (user != null) {
+      return user.uid;
+    } else {
+      throw const ServerException(
+          errorMessage: LogicStrings.kUserNotFoundErrorMessage);
     }
   }
 }

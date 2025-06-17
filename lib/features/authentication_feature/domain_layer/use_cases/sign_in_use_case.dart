@@ -7,14 +7,14 @@ import 'package:either_dart/src/either.dart';
 
 import '../../../../core/utils/usecase/base_usecase.dart';
 
-class SignInUseCase extends BaseUseCase<void,SignInEntity> {
+class SignInUseCase extends BaseUseCase<String,SignInEntity> {
   final BaseAuthenticationRepository baseAuthenticationRepository;
 
   SignInUseCase({
     required this.baseAuthenticationRepository,
   });
   @override
-  Future<Either<Failure,void>> call(SignInEntity object) async {
+  Future<Either<Failure,String>> call(SignInEntity object) async {
 
     return await baseAuthenticationRepository.signIn(
         signInEntity: object);

@@ -24,7 +24,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     result.fold((failure) {
       emit(SignInErrorState(error: failure.userMessage));
     }, (success) {
-      emit(SignInSuccessState());
+      emit(SignInSuccessState(useDcoId:success));
     });
   }
 }
