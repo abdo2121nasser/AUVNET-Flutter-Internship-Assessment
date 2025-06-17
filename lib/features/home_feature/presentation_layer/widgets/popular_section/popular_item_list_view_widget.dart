@@ -11,9 +11,8 @@ class PopularItemListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.maybeOf(context)!.size.height;
     return SizedBox(
-      height: height * 0.19,
+      height: k130V,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => PopularItemWidget(popularEntity: populars[index],),

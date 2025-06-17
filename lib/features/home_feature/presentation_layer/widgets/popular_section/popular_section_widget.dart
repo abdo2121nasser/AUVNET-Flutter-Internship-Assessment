@@ -38,7 +38,7 @@ class PopularSectionWidget extends StatelessWidget {
                 return PopularItemListViewWidget(populars: state.populars,);
               }
               else{
-                return SizedBox();
+                return const SizedBox();
               }
             },
           ),
