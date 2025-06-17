@@ -6,7 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../configuration/routes.dart';
 import '../../../../../core/utils/component/local_image_assets_widget.dart';
+import '../../../../../core/utils/enums/request_state_enum.dart';
 import '../../../../../core/utils/values/app_size.dart';
 import '../../controllers/sign_in_bloc/sign_in_bloc.dart';
 import 'sign_in_button_section_widget.dart';
@@ -35,29 +37,52 @@ class _SignInScreenBodyWidgetState extends State<SignInScreenBodyWidget> {
           UserBloc.get(context).add(GetUserEvent(userDocId: state.useDcoId));
         }
       },
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: k20H),
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.maybeOf(context)!.size.height * 0.01,
-            ),
-            const LocalImageAssetsWidget(
-              imagePath: kNawelImage,
-            ),
-            SignInFormWidget(
-              globalKey: _globalKey,
-              emailController: _emailController,
-              passwordController: _passwordController,
-            ),
-            SizedBox(
-              height: k20V,
-            ),
-            SignInButtonSectionWidget(
-              validate: _validate,
-              getSignInData: _getSignInData,
-            )
-          ],
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<UserBloc, UserState>(
+            listenWhen: (previous, current) =>
+                previous.getUserState != current.getUserState,
+            listener: (context, state) {
+              if (state.getUserState == RequestStateEnum.success) {
+                UserBloc.get(context)
+                    .add(StoreUserEvent(userEntity: state.userEntity!));
+              }
+            },
+          ),
+          BlocListener<UserBloc, UserState>(
+            listenWhen: (previous, current) =>
+                previous.storeUserState != current.storeUserState,
+            listener: (context, state) {
+              if (state.storeUserState == RequestStateEnum.success) {
+                AppRoute.router.pushReplacement(AppRoute.mainShellScreen);
+              }
+            },
+          ),
+        ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: k20H),
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.maybeOf(context)!.size.height * 0.01,
+              ),
+              const LocalImageAssetsWidget(
+                imagePath: kNawelImage,
+              ),
+              SignInFormWidget(
+                globalKey: _globalKey,
+                emailController: _emailController,
+                passwordController: _passwordController,
+              ),
+              SizedBox(
+                height: k20V,
+              ),
+              SignInButtonSectionWidget(
+                validate: _validate,
+                getSignInData: _getSignInData,
+              )
+            ],
+          ),
         ),
       ),
     );

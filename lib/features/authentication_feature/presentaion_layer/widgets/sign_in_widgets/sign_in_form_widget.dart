@@ -26,35 +26,26 @@ class SignInFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<UserBloc, UserState>(
-      listenWhen: (previous, current) =>
-      previous.getUserState != current.getUserState,
-      listener: (context, state) {
-        if (state.getUserState == RequestStateEnum.success) {
-          AppRoute.router.pushReplacement(AppRoute.mainShellScreen);
-        }
-      },
-      child: Form(
-        key: globalKey,
-        child: Column(
-          children: [
-            GeneralTextFormField(
-                controller: emailController,
-                prefixIcon: CupertinoIcons.envelope,
-                hint: UiStrings.kEmailHint,
-                label: UiStrings.kEmailLabel,
-                validator: ValidatorService.validateEmail),
-            SizedBox(
-              height: k20V,
-            ),
-            GeneralTextFormField(
-                controller: passwordController,
-                prefixIcon: CupertinoIcons.lock,
-                hint: UiStrings.kPasswordHint,
-                label: UiStrings.kPasswordLabel,
-                validator: ValidatorService.validatePassword),
-          ],
-        ),
+    return Form(
+      key: globalKey,
+      child: Column(
+        children: [
+          GeneralTextFormField(
+              controller: emailController,
+              prefixIcon: CupertinoIcons.envelope,
+              hint: UiStrings.kEmailHint,
+              label: UiStrings.kEmailLabel,
+              validator: ValidatorService.validateEmail),
+          SizedBox(
+            height: k20V,
+          ),
+          GeneralTextFormField(
+              controller: passwordController,
+              prefixIcon: CupertinoIcons.lock,
+              hint: UiStrings.kPasswordHint,
+              label: UiStrings.kPasswordLabel,
+              validator: ValidatorService.validatePassword),
+        ],
       ),
     );
   }

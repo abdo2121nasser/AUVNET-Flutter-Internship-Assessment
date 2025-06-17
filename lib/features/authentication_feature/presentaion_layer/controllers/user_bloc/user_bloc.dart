@@ -52,7 +52,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(state.copyWith(
         storeUserState: RequestStateEnum.loading,
         userEntity: event.userEntity));
-    final result = await storeUserUseCase(event.userDocId);
+    final result = await storeUserUseCase(event.userEntity);
     result.fold((failure) {
       debugPrint(failure.devMessage);
       showToastMessage(message: failure.userMessage);
@@ -75,7 +75,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           getUserState: RequestStateEnum.error,
           errorMessage: failure.userMessage));
     }, (success) {
-      emit(state.copyWith(getUserState: RequestStateEnum.success));
+      emit(state.copyWith(getUserState: RequestStateEnum.success,userEntity: success),);
     });
   }
 }
