@@ -1,3 +1,4 @@
+import 'package:auvent_flutter_internship_assessment/configuration/routes.dart';
 import 'package:auvent_flutter_internship_assessment/core/services/validator_service.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/images.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
@@ -42,63 +43,71 @@ class SignUpFormWidget extends StatelessWidget {
       },
       child: BlocListener<UserBloc, UserState>(
         listenWhen: (previous, current) =>
-            previous.createUserState != current.createUserState
-        ,
+        previous.createUserState != current.createUserState,
         listener: (context, state) {
           if (state.createUserState == RequestStateEnum.success) {
             UserBloc.get(context)
                 .add(StoreUserEvent(userEntity: state.userEntity!));
           }
         },
-        child: Form(
-          key: globalKey,
-          child: Column(
-            children: [
-              GeneralTextFormField(
-                  controller: nameController,
-                  prefixIcon: CupertinoIcons.envelope,
-                  hint: UiStrings.kNameHint,
-                  label: UiStrings.kNameLabel,
-                  validator: ValidatorService.validateName),
-              SizedBox(
-                height: k20V,
-              ),
-              GeneralTextFormField(
-                  controller: emailController,
-                  prefixIcon: CupertinoIcons.envelope,
-                  hint: UiStrings.kEmailHint,
-                  label: UiStrings.kEmailLabel,
-                  validator: ValidatorService.validateEmail),
-              SizedBox(
-                height: k20V,
-              ),
-              GeneralTextFormField(
-                  controller: passwordController,
-                  prefixIcon: CupertinoIcons.lock,
-                  hint: UiStrings.kPasswordHint,
-                  label: UiStrings.kPasswordLabel,
-                  validator: ValidatorService.validatePassword),
-              SizedBox(
-                height: k20V,
-              ),
-              GeneralTextFormField(
-                  controller: confirmPasswordController,
-                  prefixIcon: CupertinoIcons.lock,
-                  hint: UiStrings.kPasswordHint,
-                  label: UiStrings.kConfirmPasswordLabel,
-                  validator: (value) =>
-                      ValidatorService.validateConfirmPassword(
-                        value,
-                        passwordController.text,
-                      ))
-            ],
+        child: BlocListener<UserBloc, UserState>(
+          listenWhen: (previous, current) =>
+          previous.storeUserState != current.storeUserState,
+          listener: (context, state) {
+            if (state.storeUserState == RequestStateEnum.success) {
+           AppRoute.router.pushReplacement(AppRoute.mainShellScreen);
+            }          },
+          child: Form(
+            key: globalKey,
+            child: Column(
+              children: [
+                GeneralTextFormField(
+                    controller: nameController,
+                    prefixIcon: CupertinoIcons.envelope,
+                    hint: UiStrings.kNameHint,
+                    label: UiStrings.kNameLabel,
+                    validator: ValidatorService.validateName),
+                SizedBox(
+                  height: k20V,
+                ),
+                GeneralTextFormField(
+                    controller: emailController,
+                    prefixIcon: CupertinoIcons.envelope,
+                    hint: UiStrings.kEmailHint,
+                    label: UiStrings.kEmailLabel,
+                    validator: ValidatorService.validateEmail),
+                SizedBox(
+                  height: k20V,
+                ),
+                GeneralTextFormField(
+                    controller: passwordController,
+                    prefixIcon: CupertinoIcons.lock,
+                    hint: UiStrings.kPasswordHint,
+                    label: UiStrings.kPasswordLabel,
+                    validator: ValidatorService.validatePassword),
+                SizedBox(
+                  height: k20V,
+                ),
+                GeneralTextFormField(
+                    controller: confirmPasswordController,
+                    prefixIcon: CupertinoIcons.lock,
+                    hint: UiStrings.kPasswordHint,
+                    label: UiStrings.kConfirmPasswordLabel,
+                    validator: (value) =>
+                        ValidatorService.validateConfirmPassword(
+                          value,
+                          passwordController.text,
+                        ))
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  UserEntity _getUserData() => UserEntity(
+  UserEntity _getUserData() =>
+      UserEntity(
         docId: _getUserId,
         name: nameController.text,
         email: emailController.text,
