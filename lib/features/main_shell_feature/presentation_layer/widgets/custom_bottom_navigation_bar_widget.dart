@@ -1,0 +1,57 @@
+import 'package:auvent_flutter_internship_assessment/core/utils/colors/colors.dart';
+import 'package:auvent_flutter_internship_assessment/core/utils/constants/images.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/utils/constants/ui_strings.dart';
+
+class CustomBottomNavigationBarWidget extends StatelessWidget {
+  const CustomBottomNavigationBarWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      currentIndex: 0,
+      // BottomNavigationBarCubit.get(context).setCurrentBodyWithIndex,
+      onTap: (index) {
+        // BottomNavigationBarCubit.get(context).setCurrentBodyWithIndex = index;
+      },
+      items: [
+        BottomNavigationBarItem(
+          activeIcon: Image.asset(
+            kNawelImage,
+            width: 24,
+            height: 24,
+          ),
+          icon: const Icon(
+            CupertinoIcons.home,
+            color: kBlackColor,
+          ),
+          label: UiStrings.kHomeWord,
+        ),
+        const BottomNavigationBarItem(
+          icon: Icon(Icons.category),
+          label: UiStrings.kCategoriesWord,
+        ),
+        const BottomNavigationBarItem(
+          icon: Icon(Icons.local_shipping),
+          label: UiStrings.kDeliverWord,
+        ),
+        const BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.shopping_cart
+          ),
+          label: UiStrings.kCartWord,
+        ),
+        //
+        const BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.person
+          ),
+          label: UiStrings.kProfileWord,
+        ),
+      ],
+    );
+  }
+}

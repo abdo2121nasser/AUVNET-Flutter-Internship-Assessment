@@ -32,5 +32,10 @@ class UiStrings{
 
   static const String kUnknownErrorMessage='An unexpected error occurred. Please try again later.';
 
+  static const String kHomeWord='Home';
+  static const String kCategoriesWord='categories';
+  static const String kDeliverWord='Deliver';
+  static const String kCartWord='cart';
+  static const String kProfileWord='Profile';
 
 }

@@ -54,15 +54,16 @@ ThemeData get getLightTheme {
       ),
     ),
 
+      useMaterial3: true,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: kWhiteColor,
+        selectedItemColor: kPurpleColor,
+        unselectedItemColor: kBlackColor,
+        selectedLabelStyle:AppTextStyles.poppinsRegular12(color: kPurpleColor),
+        unselectedLabelStyle: AppTextStyles.poppinsRegular12(),
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
+      )
 
-    // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    //   backgroundColor: kDarkBlueColor,
-    //   selectedItemColor: kWhiteColor,
-    //   unselectedItemColor: kGreyColor,
-    // ),
-    // appBarTheme: const AppBarTheme(
-    //   backgroundColor: kBackgroundColor,
-    //   iconTheme: IconThemeData(color: kDarkBlueColor),
-    // ),
   );
 }
