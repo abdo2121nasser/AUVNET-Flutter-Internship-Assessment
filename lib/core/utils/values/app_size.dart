@@ -8,6 +8,7 @@ final double k14V = 14.h;
 final double k16V = 16.h;
 final double k18V = 18.h;
 final double k20V = 20.h;
+final double k40V = 40.h;
 final double k50V = 50.h;
 final double k60V =60.h;
 
@@ -21,6 +22,7 @@ final double k14H = 14.w;
 final double k16H = 16.w;
 final double k18H = 18.w;
 final double k20H = 20.w;
+final double k40H = 40.w;
 
 final double k5R = 5.r;
 final double k8R = 8.r;
