@@ -1,7 +1,9 @@
 
 import 'package:auvent_flutter_internship_assessment/core/utils/colors/colors.dart';
+import 'package:auvent_flutter_internship_assessment/core/utils/component/general_text_form_field.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
@@ -13,10 +15,10 @@ class ServiceImageContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.maybeOf(context)!.size.height;
 
     return Container(
-      height: height * 0.1,
+      height: k100V,
+      width: k120H,
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(horizontal: k10H, vertical: k10V),
       decoration: BoxDecoration(

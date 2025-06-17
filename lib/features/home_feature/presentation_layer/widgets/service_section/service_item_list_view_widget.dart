@@ -15,10 +15,9 @@ class ServiceItemsListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.maybeOf(context)!.size.height;
 
     return SizedBox(
-        height: height * 0.2,
+        height: k170V,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => ServiceItemWidget(service: services[index],),
