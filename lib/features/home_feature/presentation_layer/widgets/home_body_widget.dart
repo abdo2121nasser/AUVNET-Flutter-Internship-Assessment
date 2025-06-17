@@ -1,3 +1,4 @@
+import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/popular_section/popular_section_widget.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/service_section/service_section_widget.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/short_cut_section/short_cut_section_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,8 +22,14 @@ class HomeBodyWidget extends StatelessWidget {
           height: k2V,
         ),
         const ServiceSectionWidget(),
-        const ShotCutSectionWidget()
+        const ShotCutSectionWidget(),
+        PopularSectionWidget()
       ],
     );
   }
 }
+
+
+
+
+
