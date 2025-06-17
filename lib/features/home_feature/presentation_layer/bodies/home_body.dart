@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/home_body_widget.dart';
+
 
 
 class HomeBody extends StatelessWidget {
@@ -7,6 +9,6 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const SingleChildScrollView(child: HomeBodyWidget());
   }
 }
