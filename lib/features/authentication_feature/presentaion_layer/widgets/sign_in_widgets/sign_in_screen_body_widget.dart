@@ -11,6 +11,7 @@ import '../../../../../core/utils/component/local_image_assets_widget.dart';
 import '../../../../../core/utils/enums/request_state_enum.dart';
 import '../../../../../core/utils/values/app_size.dart';
 import '../../controllers/sign_in_bloc/sign_in_bloc.dart';
+import 'sign_in_multi_bloc_listener_widget.dart';
 import 'sign_in_button_section_widget.dart';
 
 class SignInScreenBodyWidget extends StatefulWidget {
@@ -35,6 +36,7 @@ class _SignInScreenBodyWidgetState extends State<SignInScreenBodyWidget> {
       padding: EdgeInsets.symmetric(horizontal: k20H),
       child: Column(
         children: [
+          const SignInMultiBlocListenerWidget(),
           SizedBox(
             height: MediaQuery.maybeOf(context)!.size.height * 0.01,
           ),
