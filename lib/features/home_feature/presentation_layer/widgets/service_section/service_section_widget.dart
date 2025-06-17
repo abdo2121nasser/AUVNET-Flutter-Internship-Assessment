@@ -16,22 +16,18 @@ class ServiceSectionWidget extends StatelessWidget {
     final double height = MediaQuery.maybeOf(context)!.size.height;
 
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: k14H,vertical: k10V),
-      child: SizedBox(
-        width: double.maxFinite,
-        height: height * 0.28,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '${UiStrings.kServiceWord}:',
-              style: AppTextStyles.dmSansBold20(),
-            ),
-            SizedBox(height: k10V),
-            const ServiceItemsListViewWidget(),
-          ],
-        ),
+      padding:  EdgeInsets.symmetric(horizontal: k14H),
+      child: Column(
+        //2.6
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${UiStrings.kServiceWord}:',
+            style: AppTextStyles.dmSansBold20(),
+          ),
+          const ServiceItemsListViewWidget(),
+        ],
       ),
     );
   }

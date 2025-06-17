@@ -24,6 +24,7 @@ final double k18H = 18.w;
 final double k20H = 20.w;
 final double k30H = 30.w;
 final double k40H = 40.w;
+final double k60H = 60.w;
 
 final double k5R = 5.r;
 final double k8R = 8.r;
