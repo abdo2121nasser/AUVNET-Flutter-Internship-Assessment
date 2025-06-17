@@ -2,6 +2,7 @@ import 'dart:ui';
 
 const Color kBlackColor = Color(0xff333333);
 const Color kWhiteColor = Color(0xffffffff);
+const Color kDarkWhiteColor = Color(0xffF5F5F5);
 const Color kPurpleColor = Color(0xff8900FE);
 const Color kBlueColor = Color(0xff1877F2);
 const Color kGreyColor = Color(0xff677294);

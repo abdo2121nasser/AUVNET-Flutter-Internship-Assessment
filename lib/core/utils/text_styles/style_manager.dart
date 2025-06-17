@@ -49,6 +49,14 @@ class AppTextStyles {
     color: color,
     height: k2V,
 
+  );// DM Sans Bold, size 20
+  static TextStyle dmSansBold20({Color color = kBlackColor}) => TextStyle(
+    fontFamily: FontFamily.dmSans,
+    fontWeight: FontWeightManager.bold,
+    fontSize: FontSize.s20,
+    color: color,
+    height: k2V,
+
   );
 
   // Rubik Medium, size 28

@@ -38,4 +38,7 @@ class UiStrings{
   static const String kCartWord='cart';
   static const String kProfileWord='Profile';
 
+
+  static const String kServiceWord='Service';
+
 }
