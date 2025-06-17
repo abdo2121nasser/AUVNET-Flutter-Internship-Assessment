@@ -9,7 +9,7 @@ import 'package:auvent_flutter_internship_assessment/features/authentication_fea
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/repositories/base_authentication_repository.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/repositories/base_user_repository.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/create_user_use_case.dart';
-import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/get_user_use_case.dart';
+import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/get_remote_user_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/is_signed_in_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/sign_in_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/sign_in_bloc/sign_in_bloc.dart';
@@ -24,6 +24,7 @@ import 'package:auvent_flutter_internship_assessment/features/home_feature/domai
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/controllers/popular_bloc/popular_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/authentication_feature/domain_layer/use_cases/get_local_user_use_case.dart';
 import '../../features/authentication_feature/domain_layer/use_cases/sign_up_use_case.dart';
 import '../../features/authentication_feature/domain_layer/use_cases/store_user_use_case.dart';
 import '../../features/authentication_feature/presentaion_layer/controllers/sign_up_bloc/sign_up_bloc.dart';
@@ -51,7 +52,8 @@ class ServicesLocator {
         () => SignUpUseCase(baseAuthenticationRepository: sl()));
     sl.registerLazySingleton(() => CreateUserUseCase(baseUserRepository: sl()));
     sl.registerLazySingleton(() => StoreUserUseCase(baseUserRepository: sl()));
-    sl.registerLazySingleton(() => GetUserUseCase(baseUserRepository: sl()));
+    sl.registerLazySingleton(() => GetRemoteUserUseCase(baseUserRepository: sl()));
+    sl.registerLazySingleton(() => GetLocalUserUseCase(baseUserRepository: sl()));
     sl.registerLazySingleton(
         () => IsSignedInUseCase(baseAuthenticationRepository: sl()));
 

@@ -21,12 +21,12 @@ class SignInButtonSectionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserBloc, UserState>(
       buildWhen: (previous, current) =>
-          previous.getUserState != current.getUserState,
+          previous.getRemoteUserState != current.getRemoteUserState,
       builder: (context, userState) {
         return BlocBuilder<SignInBloc, SignInState>(
           builder: (context, state) {
             if (state is SignInLoadingState ||
-                userState.getUserState == RequestStateEnum.loading) {
+                userState.getRemoteUserState == RequestStateEnum.loading) {
               return Padding(
                 padding: EdgeInsets.symmetric(vertical: k20V),
                 child: const CircularProgressIndicator(),

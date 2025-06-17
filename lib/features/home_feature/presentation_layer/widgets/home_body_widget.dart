@@ -32,7 +32,7 @@ class HomeBodyWidget extends StatelessWidget {
         ShotCutSectionWidget(),
         BlocProvider(
           create: (context) => sl<PopularBloc>()..add(GetPopularEvent()),
-          child: PopularSectionWidget(),
+          child: const PopularSectionWidget(),
         )
       ],
     );

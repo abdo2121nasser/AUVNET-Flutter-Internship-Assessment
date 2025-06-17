@@ -9,4 +9,15 @@ class UserHiveLocalDataSource extends BaseUserLocalDataSource {
     final box = Hive.box(LogicStrings.kUserBox);
     await box.put(LogicStrings.kUser, userEntity);
   }
+
+  @override
+  UserEntity getUser() {
+    var box = Hive.box(LogicStrings.kUserBox);
+    UserEntity userEntity = box.get(LogicStrings.kUser);
+    if (userEntity != null) {
+      return userEntity;
+    } else {
+      throw Exception(LogicStrings.kUserNotFoundErrorMessage);
+    }
+  }
 }

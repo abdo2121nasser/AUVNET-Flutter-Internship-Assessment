@@ -20,9 +20,9 @@ class SignInMultiBlocListenerWidget extends StatelessWidget {
         }),
         BlocListener<UserBloc, UserState>(
           listenWhen: (previous, current) =>
-              previous.getUserState != current.getUserState,
+              previous.getRemoteUserState != current.getRemoteUserState,
           listener: (context, state) {
-            if (state.getUserState == RequestStateEnum.success) {
+            if (state.getRemoteUserState == RequestStateEnum.success) {
               UserBloc.get(context)
                   .add(StoreUserEvent(userEntity: state.userEntity!));
             }

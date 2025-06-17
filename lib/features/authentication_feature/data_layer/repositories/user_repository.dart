@@ -42,7 +42,7 @@ class UserRepository extends BaseUserRepository {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> getUser({required String userDocId}) async {
+  Future<Either<Failure, UserEntity>> getRemoteUser({required String userDocId}) async {
     try {
       final user = await baseUserRemoteDataSource.getUser(userDocId: userDocId);
       return Right(user);
@@ -53,6 +53,16 @@ class UserRepository extends BaseUserRepository {
         devMessage: e.toString(),
         userMessage: UiStrings.kUnknownErrorMessage,
       ));
+    }
+  }
+
+  @override
+  Either<Failure, UserEntity> getLocalUser() {
+    try {
+     final user=  baseUserLocalDataSource.getUser();
+      return  Right(user);
+    } catch (error) {
+      return Left(HiveFailure.fromException(error));
     }
   }
 

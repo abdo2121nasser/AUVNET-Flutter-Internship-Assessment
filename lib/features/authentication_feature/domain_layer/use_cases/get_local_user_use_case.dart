@@ -7,14 +7,14 @@ import 'package:either_dart/src/either.dart';
 
 import '../../../../core/utils/usecase/base_usecase.dart';
 
-class GetUserUseCase extends BaseUseCase<UserEntity, String> {
+class GetLocalUserUseCase extends BaseUseCase<UserEntity, void> {
   final BaseUserRepository baseUserRepository;
 
-  GetUserUseCase({
+  GetLocalUserUseCase({
     required this.baseUserRepository,
   });
   @override
-  Future<Either<Failure, UserEntity>> call(String object) async {
-    return await baseUserRepository.getUser(userDocId: object);
+  Future<Either<Failure, UserEntity>> call(void object) async {
+    return baseUserRepository.getLocalUser();
   }
 }

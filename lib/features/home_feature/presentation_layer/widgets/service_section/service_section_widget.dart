@@ -14,10 +14,7 @@ class ServiceSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery
-        .maybeOf(context)!
-        .size
-        .height;
+
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: k14H),
