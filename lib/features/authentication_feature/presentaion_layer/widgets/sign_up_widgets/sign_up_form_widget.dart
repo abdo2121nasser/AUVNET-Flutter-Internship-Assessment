@@ -33,74 +33,79 @@ class SignUpFormWidget extends StatelessWidget {
   });
 
   @override
+  @override
   Widget build(BuildContext context) {
-    return BlocListener<SignUpBloc, SignUpState>(
-      listener: (context, state) {
-        if (state is SignUpSuccessState) {
-          UserBloc.get(context)
-              .add(CreateUserEvent(userEntity: _getUserData(state.useDcoId)));
-        }
-      },
-      child: BlocListener<UserBloc, UserState>(
-        listenWhen: (previous, current) =>
-        previous.createUserState != current.createUserState,
-        listener: (context, state) {
-          if (state.createUserState == RequestStateEnum.success) {
-            UserBloc.get(context)
-                .add(StoreUserEvent(userEntity: state.userEntity!));
-          }
-        },
-        child: BlocListener<UserBloc, UserState>(
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<SignUpBloc, SignUpState>(
+          listener: (context, state) {
+            if (state is SignUpSuccessState) {
+              UserBloc.get(context).add(
+                CreateUserEvent(userEntity: _getUserData(state.useDcoId)),
+              );
+            }
+          },
+        ),
+        BlocListener<UserBloc, UserState>(
+          listenWhen: (previous, current) =>
+          previous.createUserState != current.createUserState,
+          listener: (context, state) {
+            if (state.createUserState == RequestStateEnum.success) {
+              UserBloc.get(context).add(
+                StoreUserEvent(userEntity: state.userEntity!),
+              );
+            }
+          },
+        ),
+        BlocListener<UserBloc, UserState>(
           listenWhen: (previous, current) =>
           previous.storeUserState != current.storeUserState,
           listener: (context, state) {
             if (state.storeUserState == RequestStateEnum.success) {
-           AppRoute.router.pushReplacement(AppRoute.mainShellScreen);
-            }          },
-          child: Form(
-            key: globalKey,
-            child: Column(
-              children: [
-                GeneralTextFormField(
-                    controller: nameController,
-                    prefixIcon: CupertinoIcons.envelope,
-                    hint: UiStrings.kNameHint,
-                    label: UiStrings.kNameLabel,
-                    validator: ValidatorService.validateName),
-                SizedBox(
-                  height: k20V,
-                ),
-                GeneralTextFormField(
-                    controller: emailController,
-                    prefixIcon: CupertinoIcons.envelope,
-                    hint: UiStrings.kEmailHint,
-                    label: UiStrings.kEmailLabel,
-                    validator: ValidatorService.validateEmail),
-                SizedBox(
-                  height: k20V,
-                ),
-                GeneralTextFormField(
-                    controller: passwordController,
-                    prefixIcon: CupertinoIcons.lock,
-                    hint: UiStrings.kPasswordHint,
-                    label: UiStrings.kPasswordLabel,
-                    validator: ValidatorService.validatePassword),
-                SizedBox(
-                  height: k20V,
-                ),
-                GeneralTextFormField(
-                    controller: confirmPasswordController,
-                    prefixIcon: CupertinoIcons.lock,
-                    hint: UiStrings.kPasswordHint,
-                    label: UiStrings.kConfirmPasswordLabel,
-                    validator: (value) =>
-                        ValidatorService.validateConfirmPassword(
-                          value,
-                          passwordController.text,
-                        ))
-              ],
+              AppRoute.router.pushReplacement(AppRoute.mainShellScreen);
+            }
+          },
+        ),
+      ],
+      child: Form(
+        key: globalKey,
+        child: Column(
+          children: [
+            GeneralTextFormField(
+              controller: nameController,
+              prefixIcon: CupertinoIcons.envelope,
+              hint: UiStrings.kNameHint,
+              label: UiStrings.kNameLabel,
+              validator: ValidatorService.validateName,
             ),
-          ),
+            SizedBox(height: k20V),
+            GeneralTextFormField(
+              controller: emailController,
+              prefixIcon: CupertinoIcons.envelope,
+              hint: UiStrings.kEmailHint,
+              label: UiStrings.kEmailLabel,
+              validator: ValidatorService.validateEmail,
+            ),
+            SizedBox(height: k20V),
+            GeneralTextFormField(
+              controller: passwordController,
+              prefixIcon: CupertinoIcons.lock,
+              hint: UiStrings.kPasswordHint,
+              label: UiStrings.kPasswordLabel,
+              validator: ValidatorService.validatePassword,
+            ),
+            SizedBox(height: k20V),
+            GeneralTextFormField(
+              controller: confirmPasswordController,
+              prefixIcon: CupertinoIcons.lock,
+              hint: UiStrings.kPasswordHint,
+              label: UiStrings.kConfirmPasswordLabel,
+              validator: (value) => ValidatorService.validateConfirmPassword(
+                value,
+                passwordController.text,
+              ),
+            ),
+          ],
         ),
       ),
     );
