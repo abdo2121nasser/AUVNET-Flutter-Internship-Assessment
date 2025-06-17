@@ -3,12 +3,12 @@ import 'package:auvent_flutter_internship_assessment/core/utils/text_styles/styl
 import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:flutter/material.dart';
 
-
-
-
 class ServiceInfoWidget extends StatelessWidget {
+  final String category, offer;
   const ServiceInfoWidget({
     super.key,
+    required this.category,
+    required this.offer,
   });
 
   @override
@@ -23,16 +23,15 @@ class ServiceInfoWidget extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: k5H, vertical: k5V),
               child: Text(
-                'Up to 100%',
+                offer,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.dmSansMedium12(color: kWhiteColor),
               ),
             ),
           ),
           Text(
-            'Food',                overflow: TextOverflow.ellipsis,
-
-
+            category,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.dmSansBold20(),
           ),
         ],

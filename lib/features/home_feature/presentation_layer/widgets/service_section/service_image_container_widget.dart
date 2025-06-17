@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 
 
 class ServiceImageContainerWidget extends StatelessWidget {
+  final String imageLink;
   const ServiceImageContainerWidget({
-    super.key,
+    super.key, required this.imageLink,
   });
 
   @override
@@ -23,7 +24,7 @@ class ServiceImageContainerWidget extends StatelessWidget {
         color: kDarkWhiteColor,
       ),
       child: Image.network(
-          'https://th.bing.com/th/id/OIP.gLMgwjb3Q_RNlw9DXplzegHaHa?r=0&w=1920&h=1920&rs=1&pid=ImgDetMain'),
+         imageLink),
     );
   }
 }

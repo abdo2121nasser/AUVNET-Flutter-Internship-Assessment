@@ -24,6 +24,7 @@ import 'package:get_it/get_it.dart';
 import '../../features/authentication_feature/domain_layer/use_cases/sign_up_use_case.dart';
 import '../../features/authentication_feature/domain_layer/use_cases/store_user_use_case.dart';
 import '../../features/authentication_feature/presentaion_layer/controllers/sign_up_bloc/sign_up_bloc.dart';
+import '../../features/home_feature/presentation_layer/controllers/service_bloc/service_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -34,6 +35,7 @@ class ServicesLocator {
     sl.registerFactory(() => SignUpBloc(signUpUseCase: sl()));
     sl.registerFactory(() => UserBloc(
         createUserUseCase: sl(), storeUserUseCase: sl(), getUserUseCase: sl()));
+    sl.registerFactory(() => ServiceBloc(getServicesUseCase: sl()));
 
     //useCase
     sl.registerLazySingleton(
