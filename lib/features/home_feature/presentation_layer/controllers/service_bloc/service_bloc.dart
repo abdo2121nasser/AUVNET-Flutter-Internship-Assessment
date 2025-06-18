@@ -24,12 +24,13 @@ class ServiceBloc extends Bloc<ServiceEvent, ServiceState> {
 
     result.fold(
       (failure) {
-        emit(state.copyWith(getServicesState: RequestStateEnum.error));
+        emit(state.copyWith(getServicesState: RequestStateEnum.error,error: failure.userMessage));
       },
       (services) {
         emit(state.copyWith(
           getServicesState: RequestStateEnum.success,
           services: services,
+
         ));
       },
     );

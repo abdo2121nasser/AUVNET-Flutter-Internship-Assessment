@@ -18,6 +18,7 @@ import '../../../../core/utils/values/app_size.dart';
 import '../controllers/service_bloc/service_bloc.dart';
 import 'code_section/code_container_widget.dart';
 import 'hello_section/hello_section_widget.dart';
+import 'home_body_multi_bloc_listeners_widget.dart';
 
 class HomeBodyWidget extends StatelessWidget {
   const HomeBodyWidget({super.key});
@@ -29,6 +30,7 @@ class HomeBodyWidget extends StatelessWidget {
     //remain 2 sections
     return Column(
       children: [
+        const HomeBodyMultiBlocListenersWidget(),
         const HelloSectionWidget(),
         SizedBox(
           height: k2V,
@@ -41,7 +43,7 @@ class HomeBodyWidget extends StatelessWidget {
         ShotCutSectionWidget(),
          BlocProvider(
            create: (context) => sl<SliderBloc>()..add(GetSliderImagesEvent()),
-  child: SliderSectionWidget(),
+  child: const SliderSectionWidget(),
 ),
         BlocProvider(
           create: (context) => sl<PopularBloc>()..add(GetPopularEvent()),
@@ -52,4 +54,5 @@ class HomeBodyWidget extends StatelessWidget {
     );
   }
 }
+
 

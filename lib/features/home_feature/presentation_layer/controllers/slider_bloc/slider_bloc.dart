@@ -23,7 +23,7 @@ class SliderBloc extends Bloc<SliderEvent, SliderState> {
     final result = await getSliderImagesUseCase(null);
     result.fold(
       (failure) {
-        emit(state.copyWith(getImagesState: RequestStateEnum.error));
+        emit(state.copyWith(getImagesState: RequestStateEnum.error,error: failure.userMessage));
       },
       (services) {
         emit(state.copyWith(

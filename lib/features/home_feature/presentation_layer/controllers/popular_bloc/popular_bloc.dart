@@ -22,7 +22,9 @@ class PopularBloc extends Bloc<PopularEvent, PopularState> {
 
     result.fold(
       (failure) {
-        emit(state.copyWith(getPopularsState: RequestStateEnum.error));
+        emit(state.copyWith(
+            getPopularsState: RequestStateEnum.error,
+            error: failure.userMessage));
       },
       (services) {
         emit(state.copyWith(
