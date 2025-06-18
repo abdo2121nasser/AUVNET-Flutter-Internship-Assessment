@@ -27,6 +27,7 @@ import 'package:auvent_flutter_internship_assessment/features/home_feature/domai
 import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/use_cases/get_services_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/use_cases/get_slider_images_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/controllers/popular_bloc/popular_bloc.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/controllers/slider_bloc/slider_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/authentication_feature/domain_layer/use_cases/get_local_user_use_case.dart';
@@ -52,6 +53,7 @@ class ServicesLocator {
         getLocalUserUseCase: sl()));
     sl.registerFactory(() => ServiceBloc(getServicesUseCase: sl()));
     sl.registerFactory(() => PopularBloc(getPopularUseCase: sl()));
+    sl.registerFactory(() => SliderBloc(getSliderImagesUseCase: sl()));
 
     //useCase
     sl.registerLazySingleton(
