@@ -1,3 +1,4 @@
+import 'package:auvent_flutter_internship_assessment/core/utils/component/general_cashed_image_widget.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,9 @@ class SliderImageWidget extends StatelessWidget {
       padding:  EdgeInsets.symmetric(horizontal: k14H,vertical: k14V),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(k14R),
-        child: Image.asset(
-          imagePath,
-          fit: BoxFit.cover,
-          width: double.infinity,
+        child: GeneralCashedImageWidget(
+          link:  imagePath,
+
         ),
       ),
     );
