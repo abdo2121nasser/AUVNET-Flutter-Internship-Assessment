@@ -2,6 +2,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 final double k2V = 2.h;
 final double k5V = 5.h;
+final double k8V = 8.h;
 final double k10V = 10.h;
 final double k12V = 12.h;
 final double k14V = 14.h;
@@ -22,6 +23,7 @@ final double k1_5H = 1.5.w;
 final double k2H = 2.w;
 final double k3H = 3.w;
 final double k5H = 5.w;
+final double k8H = 8.w;
 final double k10H = 10.w;
 final double k14H = 14.w;
 final double k16H = 16.w;

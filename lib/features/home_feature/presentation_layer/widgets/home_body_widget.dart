@@ -2,6 +2,7 @@ import 'package:auvent_flutter_internship_assessment/features/home_feature/prese
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/popular_section/popular_section_widget.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/service_section/service_section_widget.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/short_cut_section/short_cut_section_widget.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/slider_section/slider_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +31,8 @@ class HomeBodyWidget extends StatelessWidget {
           child: const ServiceSectionWidget(),
         ),
         ShotCutSectionWidget(),
+        SliderWidget(),
+
         BlocProvider(
           create: (context) => sl<PopularBloc>()..add(GetPopularEvent()),
           child: const PopularSectionWidget(),
