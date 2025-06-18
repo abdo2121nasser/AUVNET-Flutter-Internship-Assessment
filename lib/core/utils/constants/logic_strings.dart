@@ -14,4 +14,7 @@ class LogicStrings{
   static const String kSliderImagesLink='image link';
 
 
+  static const String kIsRunAppForFirstTime='run app for first time';
+
+
 }

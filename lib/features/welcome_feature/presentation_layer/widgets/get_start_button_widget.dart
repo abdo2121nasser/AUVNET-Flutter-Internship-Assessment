@@ -1,3 +1,5 @@
+import 'package:auvent_flutter_internship_assessment/core/utils/constants/logic_strings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:auvent_flutter_internship_assessment/configuration/routes.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/colors/colors.dart';
@@ -15,9 +17,15 @@ class GetStartButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GeneralButtonWidget(
         label: UiStrings.kGetStartWord,
-        function: () {
+        function: () async {
+          await _setNoRunAppForFirstTime();
           AppRoute.router.pushReplacement(AppRoute.signInScreen);
         },
         textStyle: AppTextStyles.rubikMedium18(color: kWhiteColor));
+  }
+
+  Future<void> _setNoRunAppForFirstTime() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(LogicStrings.kIsRunAppForFirstTime, false);
   }
 }
