@@ -19,7 +19,7 @@ class ServiceBloc extends Bloc<ServiceEvent, ServiceState> {
   }
 
   Future<void> _getServices(event, emit) async {
-    emit(const ServiceState(getServicesState: RequestStateEnum.loading));
+    emit( state.copyWith(getServicesState: RequestStateEnum.loading));
     final result = await getServicesUseCase(null);
 
     result.fold(

@@ -17,7 +17,7 @@ class PopularBloc extends Bloc<PopularEvent, PopularState> {
     on<GetPopularEvent>(_getPopulars);
   }
   Future<void> _getPopulars(event, emit) async {
-    emit(const PopularState(getPopularsState: RequestStateEnum.loading));
+    emit(state.copyWith(getPopularsState: RequestStateEnum.loading));
     final result = await getPopularUseCase(null);
 
     result.fold(
