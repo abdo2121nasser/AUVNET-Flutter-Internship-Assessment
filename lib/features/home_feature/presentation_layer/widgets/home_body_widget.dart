@@ -1,3 +1,7 @@
+import 'package:auvent_flutter_internship_assessment/core/utils/colors/colors.dart';
+import 'package:auvent_flutter_internship_assessment/core/utils/constants/images.dart';
+import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
+import 'package:auvent_flutter_internship_assessment/core/utils/text_styles/style_manager.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/controllers/popular_bloc/popular_bloc.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/popular_section/popular_section_widget.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/service_section/service_section_widget.dart';
@@ -10,6 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../core/utils/values/app_size.dart';
 import '../controllers/service_bloc/service_bloc.dart';
+import 'code_section/code_container_widget.dart';
 import 'hello_section/hello_section_widget.dart';
 
 class HomeBodyWidget extends StatelessWidget {
@@ -22,7 +27,7 @@ class HomeBodyWidget extends StatelessWidget {
     //remain 2 sections
     return Column(
       children: [
-         HelloSectionWidget(),
+        HelloSectionWidget(),
         SizedBox(
           height: k2V,
         ),
@@ -30,9 +35,9 @@ class HomeBodyWidget extends StatelessWidget {
           create: (context) => sl<ServiceBloc>()..add(GetServicesEvent()),
           child: const ServiceSectionWidget(),
         ),
+        CodeContainerWidget(),
         ShotCutSectionWidget(),
         SliderWidget(),
-
         BlocProvider(
           create: (context) => sl<PopularBloc>()..add(GetPopularEvent()),
           child: const PopularSectionWidget(),

@@ -40,6 +40,8 @@ class UiStrings{
 
 
   static const String kServiceWord='Service';
+  static const String kGotCodeWord='Got a code !';
+  static const String kGotCodeMessage='Add your code and save on your order';
   static const String kShortCutWord='Shortcuts';
   static const String kPopularSectionWord='Popular restaurants nearby';
 
