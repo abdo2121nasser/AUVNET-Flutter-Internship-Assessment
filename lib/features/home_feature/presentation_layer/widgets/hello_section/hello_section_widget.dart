@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/colors/gradients.dart';
+import '../../../../../core/utils/component/toast_message_function.dart';
 import '../../../../authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
 import 'hello_section_image_widget.dart';
 import 'hello_section_intro_widget.dart';
@@ -13,7 +14,13 @@ class HelloSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.maybeOf(context)!.size.height;
-    return Container(
+    return  BlocListener<UserBloc, UserState>(
+      listener: (context, state) {
+        if (state.getRemoteUserState == RequestStateEnum.error) {
+          showToastMessage(message: state.errorMessage);
+        }
+      },
+  child: Container(
       width: double.maxFinite,
       height: height * 0.2,
       decoration: BoxDecoration(
@@ -43,6 +50,7 @@ class HelloSectionWidget extends StatelessWidget {
           const HelloSectionImageWidget() // add spacing if needed
         ],
       ),
-    );
+    ),
+);
   }
 }

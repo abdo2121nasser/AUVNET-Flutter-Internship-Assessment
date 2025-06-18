@@ -18,7 +18,6 @@ import '../../../../core/utils/values/app_size.dart';
 import '../controllers/service_bloc/service_bloc.dart';
 import 'code_section/code_container_widget.dart';
 import 'hello_section/hello_section_widget.dart';
-import 'home_body_multi_bloc_listeners_widget.dart';
 
 class HomeBodyWidget extends StatelessWidget {
   const HomeBodyWidget({super.key});
@@ -29,8 +28,8 @@ class HomeBodyWidget extends StatelessWidget {
     // 6 sections
     //remain 2 sections
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const HomeBodyMultiBlocListenersWidget(),
         const HelloSectionWidget(),
         SizedBox(
           height: k2V,

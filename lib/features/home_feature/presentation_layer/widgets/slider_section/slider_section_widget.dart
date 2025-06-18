@@ -3,6 +3,7 @@ import 'package:auvent_flutter_internship_assessment/features/home_feature/prese
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/component/toast_message_function.dart';
 import '../../controllers/slider_bloc/slider_bloc.dart';
 
 class SliderSectionWidget extends StatelessWidget {
@@ -12,7 +13,12 @@ class SliderSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SliderBloc, SliderState>(
+    return BlocConsumer<SliderBloc, SliderState>(
+        listener: (context, state) {
+          if (state.getImagesState == RequestStateEnum.error) {
+            showToastMessage(message: state.error);
+          }
+        },
       builder: (context, state) {
         if(state.getImagesState==RequestStateEnum.success) {
           return  SliderWidget(links: state.imagesLinks,);
