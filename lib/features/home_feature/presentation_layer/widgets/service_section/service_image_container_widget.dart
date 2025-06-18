@@ -1,5 +1,6 @@
 
 import 'package:auvent_flutter_internship_assessment/core/utils/colors/colors.dart';
+import 'package:auvent_flutter_internship_assessment/core/utils/component/general_cashed_image_widget.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/component/general_text_form_field.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/values/app_size.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class ServiceImageContainerWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(k20R),
         color: kDarkWhiteColor,
       ),
-      child: Image.network(
+      child: GeneralCashedImageWidget(link:
          imageLink),
     );
   }

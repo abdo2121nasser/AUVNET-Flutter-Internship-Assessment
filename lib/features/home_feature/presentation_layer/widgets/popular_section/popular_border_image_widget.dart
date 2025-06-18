@@ -2,6 +2,7 @@ import 'package:auvent_flutter_internship_assessment/core/utils/colors/colors.da
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/component/general_cashed_image_widget.dart';
 import '../../../../../core/utils/values/app_size.dart';
 
 class PopularBorderedImageWidget extends StatelessWidget {
@@ -19,7 +20,7 @@ class PopularBorderedImageWidget extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(k10R),
           border: Border.all(color: kGreyColor, width: k1H)),
-      child: Image.network(imageLink),
+      child: GeneralCashedImageWidget(link: imageLink),
     );
   }
 }

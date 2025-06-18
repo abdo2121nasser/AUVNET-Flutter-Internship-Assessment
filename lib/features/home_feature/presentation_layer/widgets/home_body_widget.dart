@@ -41,7 +41,8 @@ class HomeBodyWidget extends StatelessWidget {
         BlocProvider(
           create: (context) => sl<PopularBloc>()..add(GetPopularEvent()),
           child: const PopularSectionWidget(),
-        )
+        ),
+        SizedBox(height: k10V,)
       ],
     );
   }

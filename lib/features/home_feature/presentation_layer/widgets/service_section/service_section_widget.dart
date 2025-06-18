@@ -34,7 +34,7 @@ class ServiceSectionWidget extends StatelessWidget {
                 return ServiceItemsListViewWidget(services: state.services,);
               }
               else{
-                return SizedBox();
+                return const SizedBox();
               }
             },
           ),
