@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../configuration/routes.dart';
+import '../../../../../core/utils/component/toast_message_function.dart';
 import '../../../../../core/utils/enums/request_state_enum.dart';
 import '../../controllers/sign_in_bloc/sign_in_bloc.dart';
 import '../../controllers/sign_up_bloc/sign_up_bloc.dart';
@@ -22,6 +23,8 @@ class SignUpMultiBlocListenerWidget extends StatelessWidget {
               UserBloc.get(context).add(
                 CreateUserEvent(userEntity: getUserData(state.useDcoId)),
               );
+            } else if (state is SignUpErrorState) {
+              showToastMessage(message: state.error);
             }
           },
         ),
@@ -34,6 +37,9 @@ class SignUpMultiBlocListenerWidget extends StatelessWidget {
                 StoreUserEvent(userEntity: state.userEntity!),
               );
             }
+            else if (state.createUserState == RequestStateEnum.error) {
+              showToastMessage(message: state.errorMessage);
+            }
           },
         ),
         BlocListener<UserBloc, UserState>(
@@ -42,6 +48,8 @@ class SignUpMultiBlocListenerWidget extends StatelessWidget {
           listener: (context, state) {
             if (state.storeUserState == RequestStateEnum.success) {
               AppRoute.router.pushReplacement(AppRoute.mainShellScreen);
+            } else if (state.storeUserState == RequestStateEnum.error) {
+              showToastMessage(message: state.errorMessage);
             }
           },
         ),

@@ -3,6 +3,7 @@ import 'package:auvent_flutter_internship_assessment/core/utils/component/toast_
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/entities/sign_in_entity.dart';
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/domain_layer/use_cases/sign_in_use_case.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -22,6 +23,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     emit(SignInLoadingState());
     final result = await signInUseCase(event.signInEntity);
     result.fold((failure) {
+  debugPrint(failure.devMessage.toString());
       emit(SignInErrorState(error: failure.userMessage));
     }, (success) {
       emit(SignInSuccessState(useDcoId:success));

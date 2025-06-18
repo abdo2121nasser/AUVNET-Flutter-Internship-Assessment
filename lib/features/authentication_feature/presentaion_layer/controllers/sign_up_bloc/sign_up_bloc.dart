@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -20,6 +21,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     emit(SignUpLoadingState());
     final result = await signUpUseCase(event.signUpEntity);
     result.fold((failure) {
+      debugPrint(failure.devMessage.toString());
+
       emit(SignUpErrorState(error: failure.userMessage));
     }, (success) {
       emit(SignUpSuccessState(useDcoId: success));

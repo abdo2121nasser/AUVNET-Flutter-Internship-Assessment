@@ -23,11 +23,15 @@ class _GeneralCashedImageWidgetState extends State<GeneralCashedImageWidget> {
         ? Image.file(
             File(_thumbnailPath!),
             fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) =>
+                const Icon(Icons.broken_image),
           )
         : _imagePath != null
             ? Image.file(
                 File(_imagePath!),
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.broken_image),
               )
             : const SizedBox();
     // const Center(

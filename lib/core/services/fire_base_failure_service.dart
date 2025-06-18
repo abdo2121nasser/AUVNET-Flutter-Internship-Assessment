@@ -80,7 +80,7 @@ class FirebaseFailure extends Failure {
       default:
         return FirebaseFailure(
           devMessage: e.message ?? "Authentication error",
-          userMessage: "An error occurred during sign-in or sign-up.",
+          userMessage: "An error occurred.",
           code: e.code,
         );
     }

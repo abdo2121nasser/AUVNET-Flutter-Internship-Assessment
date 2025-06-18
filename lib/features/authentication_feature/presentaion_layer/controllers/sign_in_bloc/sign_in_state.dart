@@ -16,8 +16,6 @@ final class SignInSuccessState extends SignInState {
 final class SignInErrorState extends SignInState {
   final String error;
 
-  SignInErrorState({required this.error}){
- showToastMessage(message: error);
-  }
+  SignInErrorState({required this.error});
 
 }
