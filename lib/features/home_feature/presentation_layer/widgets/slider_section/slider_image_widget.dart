@@ -14,7 +14,7 @@ class SliderImageWidget extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: k14H,vertical: k14V),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(k10R),
+        borderRadius: BorderRadius.circular(k14R),
         child: Image.asset(
           imagePath,
           fit: BoxFit.cover,

@@ -27,7 +27,7 @@ class HomeBodyWidget extends StatelessWidget {
     //remain 2 sections
     return Column(
       children: [
-        HelloSectionWidget(),
+        const HelloSectionWidget(),
         SizedBox(
           height: k2V,
         ),
@@ -35,9 +35,9 @@ class HomeBodyWidget extends StatelessWidget {
           create: (context) => sl<ServiceBloc>()..add(GetServicesEvent()),
           child: const ServiceSectionWidget(),
         ),
-        CodeContainerWidget(),
+        const CodeContainerWidget(),
         ShotCutSectionWidget(),
-        SliderWidget(),
+        const SliderWidget(),
         BlocProvider(
           create: (context) => sl<PopularBloc>()..add(GetPopularEvent()),
           child: const PopularSectionWidget(),
