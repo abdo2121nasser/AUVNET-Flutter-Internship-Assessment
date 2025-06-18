@@ -16,11 +16,16 @@ import 'package:auvent_flutter_internship_assessment/features/authentication_fea
 import 'package:auvent_flutter_internship_assessment/features/authentication_feature/presentaion_layer/controllers/user_bloc/user_bloc.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/base_data_source/base_popular_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/base_data_source/base_service_remote_data_source.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/base_data_source/base_slider_images_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/popular_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/service_remote_data_source.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/data_source/remote/slider_images_remote_data_source.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/reposities/service_repository.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/data_layer/reposities/slider_repository.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/reposities/base_service_repository.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/reposities/base_slider_repository.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/use_cases/get_services_use_case.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/domain_layer/use_cases/get_slider_images_use_case.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/controllers/popular_bloc/popular_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -41,7 +46,10 @@ class ServicesLocator {
     sl.registerFactory(() => SignInBloc(signInUseCase: sl()));
     sl.registerFactory(() => SignUpBloc(signUpUseCase: sl()));
     sl.registerFactory(() => UserBloc(
-        createUserUseCase: sl(), storeUserUseCase: sl(), getRemoteUserUseCase: sl(),getLocalUserUseCase: sl()));
+        createUserUseCase: sl(),
+        storeUserUseCase: sl(),
+        getRemoteUserUseCase: sl(),
+        getLocalUserUseCase: sl()));
     sl.registerFactory(() => ServiceBloc(getServicesUseCase: sl()));
     sl.registerFactory(() => PopularBloc(getPopularUseCase: sl()));
 
@@ -52,8 +60,10 @@ class ServicesLocator {
         () => SignUpUseCase(baseAuthenticationRepository: sl()));
     sl.registerLazySingleton(() => CreateUserUseCase(baseUserRepository: sl()));
     sl.registerLazySingleton(() => StoreUserUseCase(baseUserRepository: sl()));
-    sl.registerLazySingleton(() => GetRemoteUserUseCase(baseUserRepository: sl()));
-    sl.registerLazySingleton(() => GetLocalUserUseCase(baseUserRepository: sl()));
+    sl.registerLazySingleton(
+        () => GetRemoteUserUseCase(baseUserRepository: sl()));
+    sl.registerLazySingleton(
+        () => GetLocalUserUseCase(baseUserRepository: sl()));
     sl.registerLazySingleton(
         () => IsSignedInUseCase(baseAuthenticationRepository: sl()));
 
@@ -61,7 +71,8 @@ class ServicesLocator {
         () => GetServicesUseCase(baseServiceRepository: sl()));
     sl.registerLazySingleton(
         () => GetPopularUseCase(basePopularRepository: sl()));
-
+    sl.registerLazySingleton(
+        () => GetSliderImagesUseCase(baseSliderRepository: sl()));
     //repositories
     sl.registerLazySingleton<BaseAuthenticationRepository>(() =>
         AuthenticationRepository(baseAuthenticationRemoteDataSource: sl()));
@@ -72,7 +83,8 @@ class ServicesLocator {
         () => ServiceRepository(baseServiceRemoteDataSource: sl()));
     sl.registerLazySingleton<BasePopularRepository>(
         () => PopularRepository(basePopularRemoteDataSource: sl()));
-
+    sl.registerLazySingleton<BaseSliderRepository>(
+        () => SliderRepository(baseSliderImagesRemoteDataSource: sl()));
     //data source
     sl.registerLazySingleton<BaseAuthenticationRemoteDataSource>(
         () => AuthenticationByFirebaseDataSource());
@@ -85,5 +97,7 @@ class ServicesLocator {
         () => ServiceRemoteDataSource());
     sl.registerLazySingleton<BasePopularRemoteDataSource>(
         () => PopularRemoteDataSource());
+    sl.registerLazySingleton<BaseSliderImagesRemoteDataSource>(
+        () => SliderImagesRemoteDataSource());
   }
 }

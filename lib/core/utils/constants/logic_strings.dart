@@ -10,6 +10,8 @@ class LogicStrings{
 
   static const String kServicesCollection='services collection';
   static const String kPopularsCollection='populars collection';
+  static const String kSliderImagesCollection='slider images collection';
+  static const String kSliderImagesLink='image link';
 
 
 }
