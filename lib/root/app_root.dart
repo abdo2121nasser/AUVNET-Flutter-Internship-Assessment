@@ -18,7 +18,7 @@ class TaskApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => DevicePreview(
-        enabled: true,
+        enabled: false,
         builder: (context) => SafeArea(
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
