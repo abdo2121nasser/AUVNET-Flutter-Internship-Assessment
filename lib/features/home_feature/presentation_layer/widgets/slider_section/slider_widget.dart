@@ -6,7 +6,8 @@ import 'slider_image_widget.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/images.dart';
 
 class SliderWidget extends StatefulWidget {
-  const SliderWidget({super.key});
+  const SliderWidget({super.key, required this.links});
+  final List<String> links;
 
   @override
   State<SliderWidget> createState() => _SliderWidgetState();
@@ -17,12 +18,7 @@ class _SliderWidgetState extends State<SliderWidget> {
   late PageController _pageController;
   Timer? _timer;
 
-  final List<String> imagePaths = [
-    kSlider1Image,
-    kFemaleImage,
-    kWelcomeImage,
-    kNawelImage,
-  ];
+
 
   @override
   void initState() {
@@ -30,7 +26,7 @@ class _SliderWidgetState extends State<SliderWidget> {
     _pageController = PageController(initialPage: currentIndex);
 
     _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-      if (currentIndex < imagePaths.length - 1) {
+      if (currentIndex < widget.links.length - 1) {
         currentIndex++;
       } else {
         currentIndex = 0;
@@ -58,20 +54,20 @@ class _SliderWidgetState extends State<SliderWidget> {
           height: MediaQuery.maybeOf(context)!.size.height * 0.3,
           child: PageView.builder(
             controller: _pageController,
-            itemCount: imagePaths.length,
+            itemCount: widget.links.length,
             onPageChanged: (index) {
               setState(() {
                 currentIndex = index;
               });
             },
             itemBuilder: (context, index) {
-              return SliderImageWidget(imagePath: imagePaths[index]);
+              return SliderImageWidget(imagePath: widget.links[index]);
             },
           ),
         ),
          SizedBox(height: k16V),
         NumberOfImagesWidget(
-          itemCount: imagePaths.length,
+          itemCount: widget.links.length,
           currentIndex: currentIndex,
         ),
       ],

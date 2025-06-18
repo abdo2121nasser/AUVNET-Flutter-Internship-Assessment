@@ -3,9 +3,11 @@ import 'package:auvent_flutter_internship_assessment/core/utils/constants/images
 import 'package:auvent_flutter_internship_assessment/core/utils/constants/ui_strings.dart';
 import 'package:auvent_flutter_internship_assessment/core/utils/text_styles/style_manager.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/controllers/popular_bloc/popular_bloc.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/controllers/slider_bloc/slider_bloc.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/popular_section/popular_section_widget.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/service_section/service_section_widget.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/short_cut_section/short_cut_section_widget.dart';
+import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/slider_section/slider_section_widget.dart';
 import 'package:auvent_flutter_internship_assessment/features/home_feature/presentation_layer/widgets/slider_section/slider_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +39,10 @@ class HomeBodyWidget extends StatelessWidget {
         ),
         const CodeContainerWidget(),
         ShotCutSectionWidget(),
-        const SliderWidget(),
+         BlocProvider(
+           create: (context) => sl<SliderBloc>()..add(GetSliderImagesEvent()),
+  child: SliderSectionWidget(),
+),
         BlocProvider(
           create: (context) => sl<PopularBloc>()..add(GetPopularEvent()),
           child: const PopularSectionWidget(),
@@ -47,3 +52,4 @@ class HomeBodyWidget extends StatelessWidget {
     );
   }
 }
+
